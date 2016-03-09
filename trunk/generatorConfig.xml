@@ -25,7 +25,7 @@
 			<property name="enableSubPackages" value="true"/>
 		</javaClientGenerator>
 		
-		<table tableName="admin" domainObjectName="Admin" >
+		<table tableName="user" domainObjectName="User" >
 		</table>
 		
 	</context>

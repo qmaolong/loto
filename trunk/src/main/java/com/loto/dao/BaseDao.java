@@ -1,11 +1,10 @@
 package com.loto.dao;
 
-import java.io.Serializable;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-public interface BaseDao<D extends Serializable, M> {
+public interface BaseDao<D, M> {
 	int countByExample(M example);
 
     int deleteByExample(M example);

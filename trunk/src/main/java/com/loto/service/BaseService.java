@@ -1,13 +1,11 @@
 package com.loto.service;
 
-import java.io.Serializable;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import com.github.pagehelper.PageInfo;
 import com.loto.dao.BaseDao;
 
-public abstract class BaseService<D extends Serializable, M> {
+public abstract class BaseService<D, M> {
 	protected D entity;
 	protected M example;
 	
