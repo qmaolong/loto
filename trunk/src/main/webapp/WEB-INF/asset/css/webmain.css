@@ -1,0 +1,55 @@
+   .nav_div {
+    min-width: 1024px;
+    height: 60px;
+    background: none repeat scroll 0% 0% #FAFAFA;
+    border-top: 3px solid #019875;
+    margin-bottom: 10px;
+}
+.nav_bar {
+    margin: 0 auto; text-align: left; width: 1000px;
+}
+.nav_bar .logo{
+    float: left;
+    margin: 10px 0px;
+    background: url("http://vip.qt3633.com/css/images/lagou-logo.png") no-repeat scroll 0% 0% transparent;
+    width: 229px;
+    height: 43px;
+}
+
+div.nav_bar .header-nav {
+    padding: 0px 20px; width: auto;
+    height: 55px;
+    text-align: center;
+    line-height: 55px;
+    display: block;
+    font-size: 20px;
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: 0px;
+    font-family: "微软雅黑";
+}
+div.nav_bar .header-nav:hover {
+    text-decoration: none;
+    color:#000;
+}
+
+div.nav_bar .header-nav.current {
+    color: #333;
+    background-color: #fff;
+    z-index: 1;
+    border-bottom: 3px solid #019875;
+}
+
+.content-wrapper {
+    padding-top: 10px;
+}
+
+
+.tip{
+    background:#ffd;
+    padding:10px;
+    margin:5px;
+    color:#BD0000;
+    border:1px solid #eeeeee;
+}

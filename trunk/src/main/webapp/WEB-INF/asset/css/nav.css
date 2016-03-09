@@ -1,0 +1,33 @@
+
+
+.nav_div {
+    background: #0095B2; text-align: center;
+}
+.nav_bar {
+    margin: 0 auto; text-align: left; width: 1000px;
+}
+.content-wrapper {
+    width: 1000px; background: white; margin: 0 auto; padding: 20px;
+    font-family: "微软雅黑"; font-size: 14px;
+}
+
+div.nav_bar .header-nav {
+    width: 120px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    display: block;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+div.nav_bar .header-nav:hover {
+
+    text-decoration: none;
+}
+
+div.nav_bar .header-nav.current {
+    color: #333;
+    background-color: #fff;
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<classPathEntry location="C:/Users/1/.m2/repository/mysql/mysql-connector-java/5.1.22/mysql-connector-java-5.1.22.jar"/>
+	<context id="maven_mybatis" targetRuntime="MyBatis3">
+		<commentGenerator>  
+			<!-- 是否去除自动生成的注释 true：是 ： false:否   -->
+			<property name="suppressAllComments" value="true"/>
+		</commentGenerator>
+		
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+		    connectionURL="jdbc:mysql://localhost:3306/loto"
+		    userId="root" password="123456">
+		</jdbcConnection>
+		
+		<javaModelGenerator targetPackage="com.loto.model" targetProject="loto/src/main/java">
+		    <property name="enableSubPackages" value="true"/>
+		</javaModelGenerator>
+		
+		<sqlMapGenerator targetPackage="mapper" targetProject="loto/src/main/resources">
+		     <property name="enableSubPackages" value="true"/>
+		</sqlMapGenerator>
+		 
+		<javaClientGenerator type="MAPPER" targetPackage="com.loto.dao" targetProject="loto/src/main/java">
+			<property name="enableSubPackages" value="true"/>
+		</javaClientGenerator>
+		
+		<table tableName="admin" domainObjectName="Admin" >
+		</table>
+		
+	</context>
+</generatorConfiguration>
