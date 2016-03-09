@@ -1,0 +1,233 @@
+@charset "utf-8";
+
+
+* html body{
+overflow: visible;
+}
+* html iframe, * html frame{
+overflow: auto;
+}
+* html frameset{
+overflow: hidden;
+}
+
+
+
+body{color:#000;background:#fff;font:12px/22px; font-family: "Microsoft YaHei", "微软雅黑";text-align:center; position: relative; left:0px; top:0px; position: relative; top: 0px; left: 0px;}
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,img,div{margin:0;padding:0;}
+input,select{font-size:12px;vertical-align:middle;}
+a{color:black; text-decoration:none;}
+
+
+
+body div{text-align:left;}
+
+
+textarea,input{	word-wrap:break-word;word-break:break-all;padding:0px;}
+
+li{list-style-type:none;}
+
+img{border:0 none;}
+
+.a:link,
+.a:visited{
+color:#000;
+text-decoration: none;
+}
+.a:hover{
+color:#F60;
+text-decoration: none;
+}
+
+  
+
+
+h1{ font-size:24px;}
+h2{ font-size:20px;}
+h3{ font-size:18px;}
+h4{ font-size:16px;}
+h5{ font-size:14px;}
+h6{ font-size:12px;}
+
+
+
+
+
+
+.pointer{cursor:pointer;}
+
+.NoBorder{border:0 none;}
+
+.t-l{text-align:left;}
+.t-c{text-align:center;}
+.t-r{text-align:right;}
+
+
+.Break{word-break:break-all;word-wrap:break-word;}
+.Nobreak{word-break:keep-all;word-wrap:normal;}
+
+
+.FL{float:left;}
+.FR{float:right;}
+
+
+.UnLine{text-decoration:underline;}
+.DisunLine{text-decoration:none;}
+
+
+.absolute{position:absolute;}
+.relative{position:relative;}
+
+
+
+
+
+
+  
+
+
+
+.wrapper{
+clear: both;
+overflow: hidden;
+}
+
+
+
+
+.o-hidden{overflow:hidden;}
+
+.invisible{
+visibility:hidden;
+}
+
+
+.hidden{
+display: none;
+}
+.block {display:block;}
+
+
+
+ .clear{clear:both; height:0px; width:100%; font-size:1px; line-height:0px; visibility:hidden; overflow:hidden;}
+ 
+
+
+
+
+
+.BTW{ border-top-width:1px;}
+.BRW{ border-right-width:1px;}
+.BLW{ border-left-width:1px;}
+.BBW{ border:0px; border-bottom-width:1px;}
+.Bord1{border:1px solid #999;}
+.Bord2{border:2px solid #999;}
+
+
+.BW1{ border-width:1px;}
+.BW2{ border-width:2px;}
+.BW3{ border-width:3px;}
+.BW4{ border-width:4px;}
+.BW5{ border-width:5px;}
+
+.BsS{ border-style:solid;}
+.BsD{ border-style:dotted;}
+
+.BcBlue{ border-color: #0000FF;}
+.BcBlack{ border-color: #000;}
+
+.BotLine{ border-bottom:1px solid #CFCFCF; overflow:hidden;}
+
+.BotDotLine01{ width:95%; margin:0 auto; background: url("http://vip.qt3633.com/public/image/dot01.gif") repeat-x; height:1px; line-height:1px; overflow:hidden;}
+
+
+
+
+.W1024,.W786,.W975,.W972{width:968px;margin:0 auto;}
+.W1024{width:1024px;}
+.W786{width:786px;}
+.W975{width:975px;}
+.W972{width:972px;}
+.W250{width: 250px;}
+
+
+
+.cRed{color: #F00;}
+.cWhite{color: #FFF;}
+.cGreen{color: #5bc648;}
+.cGray{color: #666;}
+.cBlue{ color: #00F;}
+.cblack{ color:#000;}
+
+.c001{color:#663;}
+
+
+
+
+.FB{font-weight:bold;}
+.FN{ font-weight:normal;}
+.FI{font-style:italic;}
+
+.F10{font-size:10px;}
+.F11{font-size:11px;}
+.F12{font-size:12px;}
+.F13{font-size:13px;}
+.F14{font-size:14px;}
+.F16{font-size:16px;}
+.F18{font-size:18px;}
+
+
+.DivH5,.DivH10,.DivH15,.DivH20,.DivH25,.DivH30,.DivH1,.DivH40{width:100%;overflow:hidden;}
+.DivH1{ height:1px;}
+.DivH5{height:5px;}
+.DivH10{height:10px;}
+.DivH15{height:15px;}
+.DivH20{height:20px;}
+.DivH25{height:25px;}
+.DivH30{height:30px;}
+.DivH40{height:40px;}
+
+
+.LH1{ line-height:1px; }
+.LH10{ line-height:10px; }
+.LH15{ line-height:15px; }
+.LH18{ line-height:18px; }
+.LH20{ line-height:20px; }
+.LH25{ line-height:25px;}
+.LH30{ line-height:30px;}
+.LH35{ line-height:35px;}
+
+
+
+.PTit25,.PTit20,.PTit18,.PTit30,.PTit,.PTit1,.PTit22{	width:100%;	overflow:hidden;}
+.PTit30{line-height:30px;height:30px;}
+.PTit25{line-height:25px;height:25px;}
+.PTit22{line-height:22px;height:22px;}
+.PTit20{line-height:20px;height:20px;}
+.PTit18{line-height:18px;height:18px;}
+.PTit15{line-height:15px;height:15px;}
+.PTit10{line-height:10px;height:10px;}
+.PTit1{line-height:1px;height:1px;}
+
+
+
+.More{text-align:right;position:absolute; top:0; right:3px;}
+.MoreR5{ position:absolute; top:0px; right:3px; font:12px normal; }
+.MoreR15{ position:absolute; top:0px; right:15px; font:12px normal;}
+
+
+.ArtList,.ArtList25,.ArtList22,.ArtList24{ width:100%; overflow:hidden; margin:0 auto;}
+.ArtList li{ width:100%; height:20px; line-height:20px; overflow:hidden;}
+.ArtList25 li{ width:100%; height:25px; line-height:25px; overflow:hidden;}
+.ArtList24 li{ width:100%; height:24px; line-height:24px; overflow:hidden;}
+.ArtList22 li{ width:100%; height:22px; line-height:22px; overflow:hidden;}
+
+
+
+
+
+
+
+
+  
+ 

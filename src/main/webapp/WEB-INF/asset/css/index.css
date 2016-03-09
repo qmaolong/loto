@@ -1,0 +1,138 @@
+.exami-title{
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    border: 1px solid #ccc;
+    font-size: 20px;
+    color: #666;
+}
+.mf25{
+    margin-left: 25px;
+}
+.topic{
+    width: 100%;
+    height: 32px;
+    line-height: 32px;
+    vertical-align: middle;
+}
+.topic-line{
+    font-size: 18px;
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid #ccc;
+    margin-top: 50px;
+}
+.answer{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    margin-top: 20px;
+}
+.answer-text{
+    width: 348px;
+    height: 45px;
+}
+.prompt-out{
+    margin-top: 10px;
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+}
+.prompt-title{
+    width: 180px;
+    height: 35px;
+    margin-top: 20px;
+    color: #999;
+    display: inline-block;
+}
+.prompt-t{
+    width: 100%;
+    color: #999;
+    color: #999;
+    margin: 10px 0 10px 0;
+
+}
+.subtitle{
+    color: red;
+}
+.prompt-main{
+    margin-top: 40px;
+    margin-left: 40px;
+    display: inline-block;
+
+}
+
+.prompt-img{
+    width: 90px;
+}
+.step_ol_bg{
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    vertical-align: middle;
+    text-align: center;
+    display: inline-block;
+    float: left;
+    background: url("http://img03.taobaocdn.com/imgextra/i3/758262754/TB26QrwaXXXXXbOXXXXXXXXXXXX_!!758262754.png");
+}
+.alert-div{
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    vertical-align: middle;
+}
+.prompt-left{
+    display:inline-block;
+    float: left;
+    width: 500px;
+    border-right:1px dashed #666;
+}
+.prompt-right{
+    display:inline-block;
+    float: right;
+    width: 350px;
+    margin-right: 5px;
+
+}
+.prompt-text{
+    color: red;
+    font-size: 14px;
+    margin-left: 20px;
+}
+.sub-div{
+    width: 100%;
+    height: 200px;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+.sub-div .sub-btn{
+    width: 35%;
+    font-size: 20px;
+    font-family: "微软雅黑";
+    margin: 0 auto;
+    position: absolute;
+    top: 70px;
+    left: 35%;
+}
+.suc-text{
+    width: 100%;
+    height: 35px;
+    line-height:35px;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 16px;
+    display: none;
+}
+.hide{
+    display: none;
+}
+.show{
+    display: block;
+}
+.new-alert{
+    float: right;
+    color: red;
+    margin-right: 20px;
+    font-size: 14px;
+}

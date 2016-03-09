@@ -1,0 +1,88 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <!-- spring配置文件位置，不配置默认为WEB-INF/applicationContext -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:config/applicationContext.xml,classpath:config/applicationContext-mybatis.xml,classpath:config/quartzJob.xml</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- springMVC核心配置 -->
+	<servlet>
+		<servlet-name>spring</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:config/spring-mvc.xml</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>spring</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>/asset/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- 解决工程编码过滤器 -->
+	<filter>
+		<filter-name>characterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>characterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!--上传 -->
+	<servlet>
+		<servlet-name>fileUploadServlet</servlet-name>
+		<servlet-class>com.backend.ggcar.web.servlet.FileUploadServlet</servlet-class>
+		<!--上传路径 -->
+		<init-param>
+			<param-name>uploadPath</param-name>
+			<param-value>c:/upload</param-value>
+		</init-param>
+		<!--上传大小限制 -->
+		<init-param>
+			<param-name>maxSize</param-name>
+			<param-value>1048576</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>fileUploadServlet</servlet-name>
+		<url-pattern>/fileUploadServlet</url-pattern>
+	</servlet-mapping>
+
+	<!-- 错误页面 -->
+	<error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/error.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/500.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/404.jsp</location>
+	</error-page>
+
+	<welcome-file-list>
+		<welcome-file>/views/index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

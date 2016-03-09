@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Bean头部 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+             http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd              
+             http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+	<!-- 对包中的所有类进行扫描，以完成Bean创建和自动依赖注入的功能 controller/service一起被扫描，使用该注释已经包含了<context:annotation-config 
+		/>的功能 -->
+	<context:component-scan base-package="com.loto" />
+	
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>WEB-INF/views/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+
+</beans>  
+ 
+ 
+<!-- 
+ 1、重定向
+<mvc:view-controller path="/" view-name="redirect:/admin/index"/>
+即如果当前路径是/ 则重定向到/admin/index
+
+2、view name
+<mvc:view-controller path="/" view-name=admin/index"/>
+如果当前路径是/ 则交给相应的视图解析器直接解析为视图
+ 
+3、<mvc:annotation-driven />的作用为：
+向 spring 容器中注册 DefaultAnnotationHandlerMapping。 
+向 spring 容器中注册 AnnotationMethodHandlerAdapter。
+配置一些 messageconverter。
+解决了 @Controller 注解的使用前提配置，即 HandlerMapping 能够知道谁来处理请求。 
+
+
+4、将Controller抛出的异常转到特定View, 保持SiteMesh的装饰效果
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">  
+		<property name="exceptionMappings">  
+			<props>  
+				<prop key="java.lang.Throwable">error/500</prop>
+            </props>  
+		</property>  
+    </bean>
+5、Interceptor拦截器，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求 
+<mvc:interceptors>  
+    <bean class="com.host.app.web.interceptor.AllInterceptor"/>  
+    <mvc:interceptor>  
+        <mvc:mapping path="/test/number.do"/>  
+                           定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的 
+        <bean class="com.host.app.web.interceptor.LoginInterceptor"/>  
+    </mvc:interceptor>  
+</mvc:interceptors> 
+6、将Controller抛出的异常转到特定View
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">  
+		<property name="exceptionMappings">  
+			<props>  
+				<prop key="java.lang.Throwable">error/500</prop>
+            </props>  
+                                       遇到MaxUploadSizeExceededException异常时，自动跳转到/WEB-INF/jsp/error_fileupload.jsp页面 
+             <prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">error_fileupload</prop> 
+		</property>  
+    </bean>
+ 7、SpringMVC上传文件时，需要配置MultipartResolver处理器 
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+        <property name="defaultEncoding" value="UTF-8"/>  
+                   指定所上传文件的总大小不能超过200KB。注意maxUploadSize属性的限制不是针对单个文件，而是所有文件的容量之和
+        <property name="maxUploadSize" value="200000"/>  
+    </bean>
+ 8、避免IE执行AJAX时,返回JSON出现下载文件 
+    <bean id="mappingJacksonHttpMessageConverter"  
+        class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">  
+        <property name="supportedMediaTypes">  
+            <list>  
+                <value>text/html;charset=UTF-8</value>  
+            </list>  
+        </property>  
+    </bean>  
+ 
+ 9、velocity配置,对模型视图名称的解析，即在模型视图名称添加前后缀
+	<bean id="velocityConfig"
+		class="org.springframework.web.servlet.view.velocity.VelocityConfigurer"
+		scope="prototype">
+		<property name="resourceLoaderPath" value="/WEB-INF/views" />
+		<property name="configLocation" value="classpath:config/velocity.properties" />
+	</bean>
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
+		<property name="suffix" value=".vm" />
+		<property name="contentType" value="text/html;charset=UTF-8" />		
+
+		使用springMacro、使用servlet的对象
+		<property name="exposeSpringMacroHelpers" value="true" />
+		<property name="exposeRequestAttributes" value="true" />
+		<property name="requestContextAttribute" value="req" />
+		<property name="exposeSessionAttributes" value="true" />
+		<property name="allowSessionOverride" value="true"/>
+
+		 spring的日期格式化 
+		<property name="dateToolAttribute" value="dateTool" />
+
+		 velocity toolbox 
+		<property name="toolboxConfigLocation" value="/WEB-INF/views/config/toolbox.xml" />
+
+		相对resourceLoaderPath位置
+		<property name="layoutUrl" value="/layout/main_layout.vm" />
+	</bean>
+	
+
+ 
+-->
+  
+  
