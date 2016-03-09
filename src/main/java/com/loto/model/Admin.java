@@ -1,9 +1,8 @@
 package com.loto.model;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class Admin implements Serializable{
+public class Admin {
     private Long id;
 
     private String adminName;

@@ -1,23 +1,21 @@
 package com.loto.controller;
 
-import java.io.Serializable;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
-import com.github.pagehelper.PageInfo;
 import com.loto.service.BaseService;
 
-public class BaseController<D extends Serializable, M> {
+public class BaseController<D, M, S extends BaseService<D, M>> {
 	@Autowired
-	private BaseService<D, M> service;
+	private S service;
 	
 	@RequestMapping("list")
-	@ResponseBody
-	public PageInfo<D> list(String queryString, Integer pageNum, Integer pageSize){
+	public String list(String queryString, Integer pageNum, Integer pageSize, Model model){
+		@SuppressWarnings("unchecked")
 		M exam = (M)JSONObject.parseObject(queryString);
-		return service.findByExample(exam, pageNum, pageSize);
+		model.addAttribute("list", service.findByExample(exam, pageNum, pageSize));
+		return "";
 	}
 }
