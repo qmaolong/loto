@@ -20,11 +20,13 @@ import javax.imageio.ImageWriter;
 
 
 
+
 import com.sun.image.codec.jpeg.JPEGCodec;  
 import com.sun.image.codec.jpeg.JPEGEncodeParam;  
 import com.sun.image.codec.jpeg.JPEGImageDecoder;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;  
 
+@SuppressWarnings("restriction")
 public class ImageUtil {
 	/** 
      * @param args 
