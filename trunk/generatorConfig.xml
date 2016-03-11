@@ -9,8 +9,8 @@
 		</commentGenerator>
 		
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-		    connectionURL="jdbc:mysql://localhost:3306/loto"
-		    userId="root" password="123456">
+		    connectionURL="jdbc:mysql://120.25.171.173:3306/loto"
+		    userId="root" password="1syyrps">
 		</jdbcConnection>
 		
 		<javaModelGenerator targetPackage="com.loto.model" targetProject="loto/src/main/java">
@@ -25,7 +25,21 @@
 			<property name="enableSubPackages" value="true"/>
 		</javaClientGenerator>
 		
+		<table tableName="admin" domainObjectName="Admin" >
+		</table>
+		<table tableName="complain" domainObjectName="Complain" >
+		</table>
+		<table tableName="message" domainObjectName="Message" >
+		</table>
+		<table tableName="mission" domainObjectName="Mission" >
+		</table>
+		<table tableName="trading" domainObjectName="Trading" >
+		</table>
+		<table tableName="trans_flow" domainObjectName="TransFlow" >
+		</table>
 		<table tableName="user" domainObjectName="User" >
+		</table>
+		<table tableName="withdraw_log" domainObjectName="WithdrawLog" >
 		</table>
 		
 	</context>

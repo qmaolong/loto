@@ -1,25 +1,44 @@
 package com.loto.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class User {
     private Long id;
 
-    private String userName;
-
-    private String password;
-
     private String mobilePhone;
 
     private String openId;
 
-    private Integer qqNumber;
+    private String password;
 
-    private String email;
+    private String wechatNo;
 
-    private Long cityId;
+    private String qq;
 
-    private Integer role;
+    private Integer status;
+
+    private BigDecimal amount;
+
+    private String userType;
+
+    private Integer sellerLevel;
+
+    private Integer buyerLevel;
+
+    private String idCard;
+
+    private String nickName;
+
+    private String headimgurl;
+
+    private Integer sex;
+
+    private String city;
+
+    private Integer isSubscribe;
+
+    private Date subscribeTime;
 
     private Date createTime;
 
@@ -31,22 +50,6 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getMobilePhone() {
@@ -65,36 +68,124 @@ public class User {
         this.openId = openId;
     }
 
-    public Integer getQqNumber() {
-        return qqNumber;
+    public String getPassword() {
+        return password;
     }
 
-    public void setQqNumber(Integer qqNumber) {
-        this.qqNumber = qqNumber;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getEmail() {
-        return email;
+    public String getWechatNo() {
+        return wechatNo;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setWechatNo(String wechatNo) {
+        this.wechatNo = wechatNo;
     }
 
-    public Long getCityId() {
-        return cityId;
+    public String getQq() {
+        return qq;
     }
 
-    public void setCityId(Long cityId) {
-        this.cityId = cityId;
+    public void setQq(String qq) {
+        this.qq = qq;
     }
 
-    public Integer getRole() {
-        return role;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setRole(Integer role) {
-        this.role = role;
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
+    public Integer getSellerLevel() {
+        return sellerLevel;
+    }
+
+    public void setSellerLevel(Integer sellerLevel) {
+        this.sellerLevel = sellerLevel;
+    }
+
+    public Integer getBuyerLevel() {
+        return buyerLevel;
+    }
+
+    public void setBuyerLevel(Integer buyerLevel) {
+        this.buyerLevel = buyerLevel;
+    }
+
+    public String getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public String getHeadimgurl() {
+        return headimgurl;
+    }
+
+    public void setHeadimgurl(String headimgurl) {
+        this.headimgurl = headimgurl;
+    }
+
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public Integer getIsSubscribe() {
+        return isSubscribe;
+    }
+
+    public void setIsSubscribe(Integer isSubscribe) {
+        this.isSubscribe = isSubscribe;
+    }
+
+    public Date getSubscribeTime() {
+        return subscribeTime;
+    }
+
+    public void setSubscribeTime(Date subscribeTime) {
+        this.subscribeTime = subscribeTime;
     }
 
     public Date getCreateTime() {

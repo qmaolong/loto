@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.loto.dao.TradingMapper" >
+  <resultMap id="BaseResultMap" type="com.loto.model.Trading" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="mission_id" property="missionId" jdbcType="BIGINT" />
+    <result column="seller_id" property="sellerId" jdbcType="BIGINT" />
+    <result column="buyer_id" property="buyerId" jdbcType="BIGINT" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="is_success" property="isSuccess" jdbcType="INTEGER" />
+    <result column="complete_content" property="completeContent" jdbcType="VARCHAR" />
+    <result column="deny_reason" property="denyReason" jdbcType="VARCHAR" />
+    <result column="commission" property="commission" jdbcType="DECIMAL" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="expired_time" property="expiredTime" jdbcType="TIMESTAMP" />
+    <result column="complete_time" property="completeTime" jdbcType="TIMESTAMP" />
+    <result column="data_status" property="dataStatus" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, mission_id, seller_id, buyer_id, status, is_success, complete_content, deny_reason, 
+    commission, start_time, expired_time, complete_time, data_status, create_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.loto.model.TradingExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from trading
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from trading
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from trading
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.loto.model.TradingExample" >
+    delete from trading
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.loto.model.Trading" >
+    insert into trading (id, mission_id, seller_id, 
+      buyer_id, status, is_success, 
+      complete_content, deny_reason, commission, 
+      start_time, expired_time, complete_time, 
+      data_status, create_time)
+    values (#{id,jdbcType=BIGINT}, #{missionId,jdbcType=BIGINT}, #{sellerId,jdbcType=BIGINT}, 
+      #{buyerId,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}, #{isSuccess,jdbcType=INTEGER}, 
+      #{completeContent,jdbcType=VARCHAR}, #{denyReason,jdbcType=VARCHAR}, #{commission,jdbcType=DECIMAL}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{expiredTime,jdbcType=TIMESTAMP}, #{completeTime,jdbcType=TIMESTAMP}, 
+      #{dataStatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.loto.model.Trading" >
+    insert into trading
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="missionId != null" >
+        mission_id,
+      </if>
+      <if test="sellerId != null" >
+        seller_id,
+      </if>
+      <if test="buyerId != null" >
+        buyer_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="isSuccess != null" >
+        is_success,
+      </if>
+      <if test="completeContent != null" >
+        complete_content,
+      </if>
+      <if test="denyReason != null" >
+        deny_reason,
+      </if>
+      <if test="commission != null" >
+        commission,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="expiredTime != null" >
+        expired_time,
+      </if>
+      <if test="completeTime != null" >
+        complete_time,
+      </if>
+      <if test="dataStatus != null" >
+        data_status,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="missionId != null" >
+        #{missionId,jdbcType=BIGINT},
+      </if>
+      <if test="sellerId != null" >
+        #{sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="buyerId != null" >
+        #{buyerId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isSuccess != null" >
+        #{isSuccess,jdbcType=INTEGER},
+      </if>
+      <if test="completeContent != null" >
+        #{completeContent,jdbcType=VARCHAR},
+      </if>
+      <if test="denyReason != null" >
+        #{denyReason,jdbcType=VARCHAR},
+      </if>
+      <if test="commission != null" >
+        #{commission,jdbcType=DECIMAL},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiredTime != null" >
+        #{expiredTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="completeTime != null" >
+        #{completeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataStatus != null" >
+        #{dataStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.loto.model.TradingExample" resultType="java.lang.Integer" >
+    select count(*) from trading
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update trading
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.missionId != null" >
+        mission_id = #{record.missionId,jdbcType=BIGINT},
+      </if>
+      <if test="record.sellerId != null" >
+        seller_id = #{record.sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="record.buyerId != null" >
+        buyer_id = #{record.buyerId,jdbcType=BIGINT},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.isSuccess != null" >
+        is_success = #{record.isSuccess,jdbcType=INTEGER},
+      </if>
+      <if test="record.completeContent != null" >
+        complete_content = #{record.completeContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.denyReason != null" >
+        deny_reason = #{record.denyReason,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commission != null" >
+        commission = #{record.commission,jdbcType=DECIMAL},
+      </if>
+      <if test="record.startTime != null" >
+        start_time = #{record.startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.expiredTime != null" >
+        expired_time = #{record.expiredTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.completeTime != null" >
+        complete_time = #{record.completeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.dataStatus != null" >
+        data_status = #{record.dataStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update trading
+    set id = #{record.id,jdbcType=BIGINT},
+      mission_id = #{record.missionId,jdbcType=BIGINT},
+      seller_id = #{record.sellerId,jdbcType=BIGINT},
+      buyer_id = #{record.buyerId,jdbcType=BIGINT},
+      status = #{record.status,jdbcType=INTEGER},
+      is_success = #{record.isSuccess,jdbcType=INTEGER},
+      complete_content = #{record.completeContent,jdbcType=VARCHAR},
+      deny_reason = #{record.denyReason,jdbcType=VARCHAR},
+      commission = #{record.commission,jdbcType=DECIMAL},
+      start_time = #{record.startTime,jdbcType=TIMESTAMP},
+      expired_time = #{record.expiredTime,jdbcType=TIMESTAMP},
+      complete_time = #{record.completeTime,jdbcType=TIMESTAMP},
+      data_status = #{record.dataStatus,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.loto.model.Trading" >
+    update trading
+    <set >
+      <if test="missionId != null" >
+        mission_id = #{missionId,jdbcType=BIGINT},
+      </if>
+      <if test="sellerId != null" >
+        seller_id = #{sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="buyerId != null" >
+        buyer_id = #{buyerId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isSuccess != null" >
+        is_success = #{isSuccess,jdbcType=INTEGER},
+      </if>
+      <if test="completeContent != null" >
+        complete_content = #{completeContent,jdbcType=VARCHAR},
+      </if>
+      <if test="denyReason != null" >
+        deny_reason = #{denyReason,jdbcType=VARCHAR},
+      </if>
+      <if test="commission != null" >
+        commission = #{commission,jdbcType=DECIMAL},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiredTime != null" >
+        expired_time = #{expiredTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="completeTime != null" >
+        complete_time = #{completeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataStatus != null" >
+        data_status = #{dataStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.loto.model.Trading" >
+    update trading
+    set mission_id = #{missionId,jdbcType=BIGINT},
+      seller_id = #{sellerId,jdbcType=BIGINT},
+      buyer_id = #{buyerId,jdbcType=BIGINT},
+      status = #{status,jdbcType=INTEGER},
+      is_success = #{isSuccess,jdbcType=INTEGER},
+      complete_content = #{completeContent,jdbcType=VARCHAR},
+      deny_reason = #{denyReason,jdbcType=VARCHAR},
+      commission = #{commission,jdbcType=DECIMAL},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      expired_time = #{expiredTime,jdbcType=TIMESTAMP},
+      complete_time = #{completeTime,jdbcType=TIMESTAMP},
+      data_status = #{dataStatus,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

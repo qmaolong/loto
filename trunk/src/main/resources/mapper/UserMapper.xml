@@ -3,14 +3,23 @@
 <mapper namespace="com.loto.dao.UserMapper" >
   <resultMap id="BaseResultMap" type="com.loto.model.User" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="user_name" property="userName" jdbcType="VARCHAR" />
-    <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="mobile_phone" property="mobilePhone" jdbcType="VARCHAR" />
     <result column="open_id" property="openId" jdbcType="VARCHAR" />
-    <result column="qq_number" property="qqNumber" jdbcType="INTEGER" />
-    <result column="email" property="email" jdbcType="VARCHAR" />
-    <result column="city_id" property="cityId" jdbcType="BIGINT" />
-    <result column="role" property="role" jdbcType="INTEGER" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="wechat_no" property="wechatNo" jdbcType="VARCHAR" />
+    <result column="qq" property="qq" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="amount" property="amount" jdbcType="DECIMAL" />
+    <result column="user_type" property="userType" jdbcType="VARCHAR" />
+    <result column="seller_level" property="sellerLevel" jdbcType="INTEGER" />
+    <result column="buyer_level" property="buyerLevel" jdbcType="INTEGER" />
+    <result column="id_card" property="idCard" jdbcType="VARCHAR" />
+    <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+    <result column="headimgurl" property="headimgurl" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="is_subscribe" property="isSubscribe" jdbcType="INTEGER" />
+    <result column="subscribe_time" property="subscribeTime" jdbcType="TIMESTAMP" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="data_status" property="dataStatus" jdbcType="INTEGER" />
   </resultMap>
@@ -73,7 +82,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, user_name, password, mobile_phone, open_id, qq_number, email, city_id, role, 
+    id, mobile_phone, open_id, password, wechat_no, qq, status, amount, user_type, seller_level, 
+    buyer_level, id_card, nick_name, headimgurl, sex, city, is_subscribe, subscribe_time, 
     create_time, data_status
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.loto.model.UserExample" >
@@ -107,13 +117,19 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.loto.model.User" >
-    insert into user (id, user_name, password, 
-      mobile_phone, open_id, qq_number, 
-      email, city_id, role, 
+    insert into user (id, mobile_phone, open_id, 
+      password, wechat_no, qq, 
+      status, amount, user_type, 
+      seller_level, buyer_level, id_card, 
+      nick_name, headimgurl, sex, 
+      city, is_subscribe, subscribe_time, 
       create_time, data_status)
-    values (#{id,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{mobilePhone,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, #{qqNumber,jdbcType=INTEGER}, 
-      #{email,jdbcType=VARCHAR}, #{cityId,jdbcType=BIGINT}, #{role,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=BIGINT}, #{mobilePhone,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{wechatNo,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{amount,jdbcType=DECIMAL}, #{userType,jdbcType=VARCHAR}, 
+      #{sellerLevel,jdbcType=INTEGER}, #{buyerLevel,jdbcType=INTEGER}, #{idCard,jdbcType=VARCHAR}, 
+      #{nickName,jdbcType=VARCHAR}, #{headimgurl,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, 
+      #{city,jdbcType=VARCHAR}, #{isSubscribe,jdbcType=INTEGER}, #{subscribeTime,jdbcType=TIMESTAMP}, 
       #{createTime,jdbcType=TIMESTAMP}, #{dataStatus,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.loto.model.User" >
@@ -122,29 +138,56 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="userName != null" >
-        user_name,
-      </if>
-      <if test="password != null" >
-        password,
-      </if>
       <if test="mobilePhone != null" >
         mobile_phone,
       </if>
       <if test="openId != null" >
         open_id,
       </if>
-      <if test="qqNumber != null" >
-        qq_number,
+      <if test="password != null" >
+        password,
       </if>
-      <if test="email != null" >
-        email,
+      <if test="wechatNo != null" >
+        wechat_no,
       </if>
-      <if test="cityId != null" >
-        city_id,
+      <if test="qq != null" >
+        qq,
       </if>
-      <if test="role != null" >
-        role,
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="userType != null" >
+        user_type,
+      </if>
+      <if test="sellerLevel != null" >
+        seller_level,
+      </if>
+      <if test="buyerLevel != null" >
+        buyer_level,
+      </if>
+      <if test="idCard != null" >
+        id_card,
+      </if>
+      <if test="nickName != null" >
+        nick_name,
+      </if>
+      <if test="headimgurl != null" >
+        headimgurl,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="isSubscribe != null" >
+        is_subscribe,
+      </if>
+      <if test="subscribeTime != null" >
+        subscribe_time,
       </if>
       <if test="createTime != null" >
         create_time,
@@ -157,29 +200,56 @@
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="userName != null" >
-        #{userName,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null" >
-        #{password,jdbcType=VARCHAR},
-      </if>
       <if test="mobilePhone != null" >
         #{mobilePhone,jdbcType=VARCHAR},
       </if>
       <if test="openId != null" >
         #{openId,jdbcType=VARCHAR},
       </if>
-      <if test="qqNumber != null" >
-        #{qqNumber,jdbcType=INTEGER},
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
       </if>
-      <if test="email != null" >
-        #{email,jdbcType=VARCHAR},
+      <if test="wechatNo != null" >
+        #{wechatNo,jdbcType=VARCHAR},
       </if>
-      <if test="cityId != null" >
-        #{cityId,jdbcType=BIGINT},
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
       </if>
-      <if test="role != null" >
-        #{role,jdbcType=INTEGER},
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerLevel != null" >
+        #{sellerLevel,jdbcType=INTEGER},
+      </if>
+      <if test="buyerLevel != null" >
+        #{buyerLevel,jdbcType=INTEGER},
+      </if>
+      <if test="idCard != null" >
+        #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="headimgurl != null" >
+        #{headimgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="isSubscribe != null" >
+        #{isSubscribe,jdbcType=INTEGER},
+      </if>
+      <if test="subscribeTime != null" >
+        #{subscribeTime,jdbcType=TIMESTAMP},
       </if>
       <if test="createTime != null" >
         #{createTime,jdbcType=TIMESTAMP},
@@ -201,29 +271,56 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.userName != null" >
-        user_name = #{record.userName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.password != null" >
-        password = #{record.password,jdbcType=VARCHAR},
-      </if>
       <if test="record.mobilePhone != null" >
         mobile_phone = #{record.mobilePhone,jdbcType=VARCHAR},
       </if>
       <if test="record.openId != null" >
         open_id = #{record.openId,jdbcType=VARCHAR},
       </if>
-      <if test="record.qqNumber != null" >
-        qq_number = #{record.qqNumber,jdbcType=INTEGER},
+      <if test="record.password != null" >
+        password = #{record.password,jdbcType=VARCHAR},
       </if>
-      <if test="record.email != null" >
-        email = #{record.email,jdbcType=VARCHAR},
+      <if test="record.wechatNo != null" >
+        wechat_no = #{record.wechatNo,jdbcType=VARCHAR},
       </if>
-      <if test="record.cityId != null" >
-        city_id = #{record.cityId,jdbcType=BIGINT},
+      <if test="record.qq != null" >
+        qq = #{record.qq,jdbcType=VARCHAR},
       </if>
-      <if test="record.role != null" >
-        role = #{record.role,jdbcType=INTEGER},
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.amount != null" >
+        amount = #{record.amount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.userType != null" >
+        user_type = #{record.userType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sellerLevel != null" >
+        seller_level = #{record.sellerLevel,jdbcType=INTEGER},
+      </if>
+      <if test="record.buyerLevel != null" >
+        buyer_level = #{record.buyerLevel,jdbcType=INTEGER},
+      </if>
+      <if test="record.idCard != null" >
+        id_card = #{record.idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nickName != null" >
+        nick_name = #{record.nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.headimgurl != null" >
+        headimgurl = #{record.headimgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null" >
+        sex = #{record.sex,jdbcType=INTEGER},
+      </if>
+      <if test="record.city != null" >
+        city = #{record.city,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isSubscribe != null" >
+        is_subscribe = #{record.isSubscribe,jdbcType=INTEGER},
+      </if>
+      <if test="record.subscribeTime != null" >
+        subscribe_time = #{record.subscribeTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.createTime != null" >
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -239,14 +336,23 @@
   <update id="updateByExample" parameterType="map" >
     update user
     set id = #{record.id,jdbcType=BIGINT},
-      user_name = #{record.userName,jdbcType=VARCHAR},
-      password = #{record.password,jdbcType=VARCHAR},
       mobile_phone = #{record.mobilePhone,jdbcType=VARCHAR},
       open_id = #{record.openId,jdbcType=VARCHAR},
-      qq_number = #{record.qqNumber,jdbcType=INTEGER},
-      email = #{record.email,jdbcType=VARCHAR},
-      city_id = #{record.cityId,jdbcType=BIGINT},
-      role = #{record.role,jdbcType=INTEGER},
+      password = #{record.password,jdbcType=VARCHAR},
+      wechat_no = #{record.wechatNo,jdbcType=VARCHAR},
+      qq = #{record.qq,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      amount = #{record.amount,jdbcType=DECIMAL},
+      user_type = #{record.userType,jdbcType=VARCHAR},
+      seller_level = #{record.sellerLevel,jdbcType=INTEGER},
+      buyer_level = #{record.buyerLevel,jdbcType=INTEGER},
+      id_card = #{record.idCard,jdbcType=VARCHAR},
+      nick_name = #{record.nickName,jdbcType=VARCHAR},
+      headimgurl = #{record.headimgurl,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=INTEGER},
+      city = #{record.city,jdbcType=VARCHAR},
+      is_subscribe = #{record.isSubscribe,jdbcType=INTEGER},
+      subscribe_time = #{record.subscribeTime,jdbcType=TIMESTAMP},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       data_status = #{record.dataStatus,jdbcType=INTEGER}
     <if test="_parameter != null" >
@@ -256,29 +362,56 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.loto.model.User" >
     update user
     <set >
-      <if test="userName != null" >
-        user_name = #{userName,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null" >
-        password = #{password,jdbcType=VARCHAR},
-      </if>
       <if test="mobilePhone != null" >
         mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
       </if>
       <if test="openId != null" >
         open_id = #{openId,jdbcType=VARCHAR},
       </if>
-      <if test="qqNumber != null" >
-        qq_number = #{qqNumber,jdbcType=INTEGER},
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
       </if>
-      <if test="email != null" >
-        email = #{email,jdbcType=VARCHAR},
+      <if test="wechatNo != null" >
+        wechat_no = #{wechatNo,jdbcType=VARCHAR},
       </if>
-      <if test="cityId != null" >
-        city_id = #{cityId,jdbcType=BIGINT},
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=VARCHAR},
       </if>
-      <if test="role != null" >
-        role = #{role,jdbcType=INTEGER},
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="userType != null" >
+        user_type = #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerLevel != null" >
+        seller_level = #{sellerLevel,jdbcType=INTEGER},
+      </if>
+      <if test="buyerLevel != null" >
+        buyer_level = #{buyerLevel,jdbcType=INTEGER},
+      </if>
+      <if test="idCard != null" >
+        id_card = #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="headimgurl != null" >
+        headimgurl = #{headimgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="isSubscribe != null" >
+        is_subscribe = #{isSubscribe,jdbcType=INTEGER},
+      </if>
+      <if test="subscribeTime != null" >
+        subscribe_time = #{subscribeTime,jdbcType=TIMESTAMP},
       </if>
       <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -291,14 +424,23 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.loto.model.User" >
     update user
-    set user_name = #{userName,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
+    set mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
       open_id = #{openId,jdbcType=VARCHAR},
-      qq_number = #{qqNumber,jdbcType=INTEGER},
-      email = #{email,jdbcType=VARCHAR},
-      city_id = #{cityId,jdbcType=BIGINT},
-      role = #{role,jdbcType=INTEGER},
+      password = #{password,jdbcType=VARCHAR},
+      wechat_no = #{wechatNo,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      amount = #{amount,jdbcType=DECIMAL},
+      user_type = #{userType,jdbcType=VARCHAR},
+      seller_level = #{sellerLevel,jdbcType=INTEGER},
+      buyer_level = #{buyerLevel,jdbcType=INTEGER},
+      id_card = #{idCard,jdbcType=VARCHAR},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      headimgurl = #{headimgurl,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      city = #{city,jdbcType=VARCHAR},
+      is_subscribe = #{isSubscribe,jdbcType=INTEGER},
+      subscribe_time = #{subscribeTime,jdbcType=TIMESTAMP},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       data_status = #{dataStatus,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
