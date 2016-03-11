@@ -6,8 +6,6 @@ import com.github.pagehelper.PageInfo;
 import com.loto.dao.BaseDao;
 
 public abstract class BaseService<D, M> {
-	protected D entity;
-	protected M example;
 	
 	public D findById(Long id){
 		return (D) getBaseDao().selectByPrimaryKey(id);

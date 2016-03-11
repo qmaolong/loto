@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.loto.dao.MissionMapper" >
+  <resultMap id="BaseResultMap" type="com.loto.model.Mission" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="mission_type" property="missionType" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="example" property="example" jdbcType="VARCHAR" />
+    <result column="city_limit" property="cityLimit" jdbcType="VARCHAR" />
+    <result column="paytype" property="paytype" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="total_commission" property="totalCommission" jdbcType="DECIMAL" />
+    <result column="total_count" property="totalCount" jdbcType="BIGINT" />
+    <result column="per_commission" property="perCommission" jdbcType="DECIMAL" />
+    <result column="rest_count" property="restCount" jdbcType="BIGINT" />
+    <result column="expired_time" property="expiredTime" jdbcType="TIMESTAMP" />
+    <result column="time_limit" property="timeLimit" jdbcType="INTEGER" />
+    <result column="per_count_limit" property="perCountLimit" jdbcType="INTEGER" />
+    <result column="version" property="version" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, user_id, title, mission_type, content, example, city_limit, paytype, status, 
+    total_commission, total_count, per_commission, rest_count, expired_time, time_limit, 
+    per_count_limit, version
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.loto.model.MissionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from mission
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from mission
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from mission
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.loto.model.MissionExample" >
+    delete from mission
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.loto.model.Mission" >
+    insert into mission (id, user_id, title, 
+      mission_type, content, example, 
+      city_limit, paytype, status, 
+      total_commission, total_count, per_commission, 
+      rest_count, expired_time, time_limit, 
+      per_count_limit, version)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, 
+      #{missionType,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{example,jdbcType=VARCHAR}, 
+      #{cityLimit,jdbcType=VARCHAR}, #{paytype,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{totalCommission,jdbcType=DECIMAL}, #{totalCount,jdbcType=BIGINT}, #{perCommission,jdbcType=DECIMAL}, 
+      #{restCount,jdbcType=BIGINT}, #{expiredTime,jdbcType=TIMESTAMP}, #{timeLimit,jdbcType=INTEGER}, 
+      #{perCountLimit,jdbcType=INTEGER}, #{version,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.loto.model.Mission" >
+    insert into mission
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="missionType != null" >
+        mission_type,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="example != null" >
+        example,
+      </if>
+      <if test="cityLimit != null" >
+        city_limit,
+      </if>
+      <if test="paytype != null" >
+        paytype,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="totalCommission != null" >
+        total_commission,
+      </if>
+      <if test="totalCount != null" >
+        total_count,
+      </if>
+      <if test="perCommission != null" >
+        per_commission,
+      </if>
+      <if test="restCount != null" >
+        rest_count,
+      </if>
+      <if test="expiredTime != null" >
+        expired_time,
+      </if>
+      <if test="timeLimit != null" >
+        time_limit,
+      </if>
+      <if test="perCountLimit != null" >
+        per_count_limit,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="missionType != null" >
+        #{missionType,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="example != null" >
+        #{example,jdbcType=VARCHAR},
+      </if>
+      <if test="cityLimit != null" >
+        #{cityLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="paytype != null" >
+        #{paytype,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="totalCommission != null" >
+        #{totalCommission,jdbcType=DECIMAL},
+      </if>
+      <if test="totalCount != null" >
+        #{totalCount,jdbcType=BIGINT},
+      </if>
+      <if test="perCommission != null" >
+        #{perCommission,jdbcType=DECIMAL},
+      </if>
+      <if test="restCount != null" >
+        #{restCount,jdbcType=BIGINT},
+      </if>
+      <if test="expiredTime != null" >
+        #{expiredTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="timeLimit != null" >
+        #{timeLimit,jdbcType=INTEGER},
+      </if>
+      <if test="perCountLimit != null" >
+        #{perCountLimit,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.loto.model.MissionExample" resultType="java.lang.Integer" >
+    select count(*) from mission
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update mission
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=BIGINT},
+      </if>
+      <if test="record.title != null" >
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.missionType != null" >
+        mission_type = #{record.missionType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null" >
+        content = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.example != null" >
+        example = #{record.example,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cityLimit != null" >
+        city_limit = #{record.cityLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paytype != null" >
+        paytype = #{record.paytype,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.totalCommission != null" >
+        total_commission = #{record.totalCommission,jdbcType=DECIMAL},
+      </if>
+      <if test="record.totalCount != null" >
+        total_count = #{record.totalCount,jdbcType=BIGINT},
+      </if>
+      <if test="record.perCommission != null" >
+        per_commission = #{record.perCommission,jdbcType=DECIMAL},
+      </if>
+      <if test="record.restCount != null" >
+        rest_count = #{record.restCount,jdbcType=BIGINT},
+      </if>
+      <if test="record.expiredTime != null" >
+        expired_time = #{record.expiredTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.timeLimit != null" >
+        time_limit = #{record.timeLimit,jdbcType=INTEGER},
+      </if>
+      <if test="record.perCountLimit != null" >
+        per_count_limit = #{record.perCountLimit,jdbcType=INTEGER},
+      </if>
+      <if test="record.version != null" >
+        version = #{record.version,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update mission
+    set id = #{record.id,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=BIGINT},
+      title = #{record.title,jdbcType=VARCHAR},
+      mission_type = #{record.missionType,jdbcType=VARCHAR},
+      content = #{record.content,jdbcType=VARCHAR},
+      example = #{record.example,jdbcType=VARCHAR},
+      city_limit = #{record.cityLimit,jdbcType=VARCHAR},
+      paytype = #{record.paytype,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      total_commission = #{record.totalCommission,jdbcType=DECIMAL},
+      total_count = #{record.totalCount,jdbcType=BIGINT},
+      per_commission = #{record.perCommission,jdbcType=DECIMAL},
+      rest_count = #{record.restCount,jdbcType=BIGINT},
+      expired_time = #{record.expiredTime,jdbcType=TIMESTAMP},
+      time_limit = #{record.timeLimit,jdbcType=INTEGER},
+      per_count_limit = #{record.perCountLimit,jdbcType=INTEGER},
+      version = #{record.version,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.loto.model.Mission" >
+    update mission
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="missionType != null" >
+        mission_type = #{missionType,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="example != null" >
+        example = #{example,jdbcType=VARCHAR},
+      </if>
+      <if test="cityLimit != null" >
+        city_limit = #{cityLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="paytype != null" >
+        paytype = #{paytype,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="totalCommission != null" >
+        total_commission = #{totalCommission,jdbcType=DECIMAL},
+      </if>
+      <if test="totalCount != null" >
+        total_count = #{totalCount,jdbcType=BIGINT},
+      </if>
+      <if test="perCommission != null" >
+        per_commission = #{perCommission,jdbcType=DECIMAL},
+      </if>
+      <if test="restCount != null" >
+        rest_count = #{restCount,jdbcType=BIGINT},
+      </if>
+      <if test="expiredTime != null" >
+        expired_time = #{expiredTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="timeLimit != null" >
+        time_limit = #{timeLimit,jdbcType=INTEGER},
+      </if>
+      <if test="perCountLimit != null" >
+        per_count_limit = #{perCountLimit,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.loto.model.Mission" >
+    update mission
+    set user_id = #{userId,jdbcType=BIGINT},
+      title = #{title,jdbcType=VARCHAR},
+      mission_type = #{missionType,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      example = #{example,jdbcType=VARCHAR},
+      city_limit = #{cityLimit,jdbcType=VARCHAR},
+      paytype = #{paytype,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      total_commission = #{totalCommission,jdbcType=DECIMAL},
+      total_count = #{totalCount,jdbcType=BIGINT},
+      per_commission = #{perCommission,jdbcType=DECIMAL},
+      rest_count = #{restCount,jdbcType=BIGINT},
+      expired_time = #{expiredTime,jdbcType=TIMESTAMP},
+      time_limit = #{timeLimit,jdbcType=INTEGER},
+      per_count_limit = #{perCountLimit,jdbcType=INTEGER},
+      version = #{version,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
