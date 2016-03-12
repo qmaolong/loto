@@ -13,7 +13,40 @@
 		/>的功能 -->
 	<context:component-scan base-package="com.loto" />
 	
-	<bean id="viewResolver"
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+	  <property name="contentType" value="text/html;charset=UTF-8" />
+	  <property name="suffix" value=".vm" />
+	  
+	  <!-- 使用springMacro、使用servlet的对象 -->
+		<property name="exposeSpringMacroHelpers" value="true" />
+		<property name="exposeRequestAttributes" value="true" />
+		<property name="requestContextAttribute" value="req" />
+		<property name="exposeSessionAttributes" value="true" />
+		<property name="allowSessionOverride" value="true"/>
+		
+		<!-- spring的日期格式化 -->
+		<property name="dateToolAttribute" value="dateTool" />
+
+		<!-- velocity toolbox -->
+		<property name="toolboxConfigLocation" value="/WEB-INF/conf/toolbox.xml" />
+
+	 </bean>
+	 
+	 <bean id="velocityConfigurer" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+	        <property name="resourceLoaderPath">
+	            <value>views/</value>
+	        </property>
+	        <property name="velocityProperties">
+	          <props>
+	            <prop key="input.encoding">UTF-8</prop>
+	            <prop key="output.encoding">UTF-8</prop>
+	            <prop key="contentType">text/html;charset=UTF-8</prop>
+	            <prop key="velocimacro.library">common/macro.vm</prop>
+	          </props>
+	        </property>
+    </bean>
+	
+	<!-- <bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
 			<value>WEB-INF/views/</value>
@@ -21,7 +54,7 @@
 		<property name="suffix">
 			<value>.jsp</value>
 		</property>
-	</bean>
+	</bean> -->
 
 </beans>  
  

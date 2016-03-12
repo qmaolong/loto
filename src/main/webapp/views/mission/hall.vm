@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    #parse("common/base.vm")
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>$TITLE</title>
+</head>
+<body ontouchstart>
+    <div class="weui_msg">
+    <div class="weui_icon_area"><i class="weui_icon_success weui_icon_msg"></i></div>
+    <div class="weui_text_area">
+        <h2 class="weui_msg_title">操作成功</h2>
+        <p class="weui_msg_desc">内容详情，可根据实际需要安排</p>
+    </div>
+    <div class="weui_opr_area">
+        <p class="weui_btn_area">
+            <a href="#" class="weui_btn weui_btn_primary">确定</a>
+            <a href="#" class="weui_btn weui_btn_default">取消</a>
+        </p>
+    </div>
+    <div class="weui_extra_area">
+        <a href="">查看详情</a>
+    </div>
+</div>
+<div id="actionSheet_wrap">
+    <div class="weui_mask_transition" id="mask"></div>
+    <div class="weui_actionsheet" id="weui_actionsheet">
+        <div class="weui_actionsheet_menu">
+            <div class="weui_actionsheet_cell">示例菜单</div>
+            <div class="weui_actionsheet_cell">示例菜单</div>
+            <div class="weui_actionsheet_cell">示例菜单</div>
+            <div class="weui_actionsheet_cell">示例菜单</div>
+        </div>
+        <div class="weui_actionsheet_action">
+            <div class="weui_actionsheet_cell" id="actionsheet_cancel">取消</div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
