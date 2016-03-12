@@ -1,0 +1,78 @@
+<div id="weui_confirm" class="weui_dialog_confirm" style="display:none">
+    <div class="weui_mask"></div>
+    <div class="weui_dialog">
+        <div class="weui_dialog_hd"><strong class="weui_dialog_title" id="confirm_title">弹窗标题</strong></div>
+        <div class="weui_dialog_bd" id="confirm_content">自定义弹窗内容，居左对齐显示，告知需要确认的信息等</div>
+        <div class="weui_dialog_ft">
+            <a href="#" id="confirm_calcel" class="weui_btn_dialog default">取消</a>
+            <a href="#" id="confirm_ensure" class="weui_btn_dialog primary">确定</a>
+        </div>
+    </div>
+</div>
+	
+<div id="weui_alert" class="weui_dialog_alert" style="display:none">
+    <div class="weui_mask"></div>
+    <div class="weui_dialog">
+        <div class="weui_dialog_hd"><strong class="weui_dialog_title" id="alert_title">弹窗标题</strong></div>
+        <div class="weui_dialog_bd" id="alert_content">弹窗内容，告知当前页面信息等</div>
+        <div class="weui_dialog_ft">
+            <a href="#" id="alert_ensure" class="weui_btn_dialog primary">确定</a>
+        </div>
+    </div>
+</div>
+	
+<script type="text/javascript">
+var Dialog = {
+	confirm : {
+		show : function(title, content, cancel, ensure, cancelBtn, ensureBtn){
+			if(null != title && title != undefined){
+				$("#confirm_title").text(title);
+			}
+			if(null != content && content != undefined){
+				$("#confirm_content").text(content);
+			}
+			if(null != cancelBtn && cancelBtn != undefined){
+				$("#confirm_calcel").text(cancelBtn);
+			}
+			if(null != ensureBtn && ensureBtn != undefined){
+				$("#confirm_ensure").text(ensureBtn);
+			}
+			$("#confirm_calcel").on("click", function(){
+    			Dialog.confirm.hide();
+				if(null != cancel && cancel != undefined){
+    				cancel();
+				}
+				}
+			);
+			$("#confirm_ensure").on("click", function(){
+    			Dialog.confirm.hide();
+				if(null != ensure && ensure != undefined){
+    				ensure();
+				}
+				}
+			);
+			$("#weui_confirm").css("display", "")
+		},
+		hide : function(){$("#weui_confirm").css("display", "none")}
+	},
+	alert : {
+		show : function(title, content, callback){
+			if(null != title && title != undefined){
+				$("#alert_title").text(title);
+			}
+			if(null != content && content != undefined){
+				$("#alert_content").text(content);
+			}
+			$("#alert_ensure").on("click", function(){
+    			Dialog.alert.hide();
+				if(null != callback && callback != undefined){
+	    			callback();	
+				}
+				}
+			);
+			$("#weui_alert").css("display", "")
+		},
+		hide : function(){$("#weui_alert").css("display", "none")}
+	}
+}
+</script>
