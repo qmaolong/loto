@@ -13,7 +13,6 @@ import com.loto.service.BaseService;
 import com.loto.service.MissionService;
 
 @Controller
-@RequestMapping("mission")
 public class MissionController extends BaseController<Mission, MissionExample>{
 	@Autowired
 	private MissionService missionService;
@@ -22,7 +21,7 @@ public class MissionController extends BaseController<Mission, MissionExample>{
 		return missionService;
 	}
 	
-	@RequestMapping("hall")
+	@RequestMapping(value = {"/", "mission/hall"})
 	public String hall(HttpServletRequest request, HttpServletResponse response){
 		
 		return "/mission/hall";
