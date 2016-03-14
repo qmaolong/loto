@@ -3,7 +3,7 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
+  <display-name>loto</display-name>
   <!-- spring配置文件位置，不配置默认为WEB-INF/applicationContext -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -83,6 +83,6 @@
 	</error-page>
 
 	<welcome-file-list>
-		<welcome-file>/views/index.jsp</welcome-file>
+		<welcome-file></welcome-file>
 	</welcome-file-list>
 </web-app>

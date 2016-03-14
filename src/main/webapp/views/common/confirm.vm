@@ -37,8 +37,5 @@
         </div>
     </div>
 </div>
-#parse("common/toast.vm")
-#parse("common/dialog.vm")
-#parse("common/actionSheet.vm")
 </body>
 </html>
