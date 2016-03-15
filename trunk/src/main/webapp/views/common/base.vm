@@ -1,9 +1,7 @@
 #set($URL = "$!{req.contextPath}")
 #set($TITLE = "骆驼街")
 <link type="text/css" rel="stylesheet" href="$URL/asset/css/weui.min.css"></link>
-<link type="text/css" rel="stylesheet" href="$URL/asset/mui/css/mui.min.css"></link>
 <script type="text/javascript" src="$URL/asset/js/zepto.min.js"></script>
-<script type="text/javascript" src="$URL/asset/mui/js/mui.min.js"></script>
 <script type="text/javascript">
 	var url = '$URL';
 </script>
