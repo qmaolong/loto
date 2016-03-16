@@ -1,7 +1,5 @@
 package com.loto.common;
 
-import java.util.List;
-
 import com.loto.util.ValidatorUtil;
 
 /**
@@ -11,7 +9,7 @@ import com.loto.util.ValidatorUtil;
  * 
  * @time 2015年7月6日 下午3:25:01
  **/
-public class OperationMessage {
+public class ResultMsg {
 	public static final String FAIL = "FAIL";
 	public static final String SUCCESS = "SUCCESS";
 	
@@ -21,20 +19,17 @@ public class OperationMessage {
 	private String returnMsg;
 	
 	/** 业务层   **/
-	private String resultCode = FAIL;
+	private String resultCode = SUCCESS;
 	
     private String errCode;
     
     private String errCodeDesc;
     
-    @SuppressWarnings("rawtypes")
-	private List result;
+	private Object result;
     
-    private Object obj;
+    private boolean success = true;
     
-    private boolean success = false;
-    
-    public OperationMessage(){}
+    public ResultMsg(){}
     
     /**
      * @description 构造通讯协议
@@ -46,9 +41,10 @@ public class OperationMessage {
      * @param
      *
      */
-    public static OperationMessage buildOpeMsg(OperationMessage opeMsg, String resultCode, String errorCode, String errorDesc){
+    public static ResultMsg buildErrorMsg(String resultCode, String errorCode, String errorDesc){
+    	ResultMsg opeMsg = new ResultMsg();
     	if (ValidatorUtil.isNull(opeMsg)) {
-			opeMsg = new OperationMessage();
+			opeMsg = new ResultMsg();
 		}
     	opeMsg.setResultCode(resultCode);
     	opeMsg.setErrCode(errorCode);
@@ -56,6 +52,12 @@ public class OperationMessage {
     	
     	return opeMsg;
     }
+    
+    public static ResultMsg buildResultMsg(Object result) {
+		ResultMsg msg = new ResultMsg();
+		msg.setResult(result);
+		return msg;
+	}
 
 	public String getReturnCode() {
 		return returnCode;
@@ -81,22 +83,12 @@ public class OperationMessage {
 		this.resultCode = resultCode;
 	}
 
-	@SuppressWarnings("rawtypes")
-	public List getResult() {
+	public Object getResult() {
 		return result;
 	}
 
-	@SuppressWarnings("rawtypes")
-	public void setResult(List result) {
+	public void setResult(Object result) {
 		this.result = result;
-	}
-
-	public Object getObj() {
-		return obj;
-	}
-
-	public void setObj(Object obj) {
-		this.obj = obj;
 	}
 
 	public String getErrCode() {

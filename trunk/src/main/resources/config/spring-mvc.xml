@@ -46,6 +46,17 @@
 	        </property>
     </bean>
     
+    <bean id="mappingJacksonHttpMessageConverter"  
+        class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">  
+        <property name="supportedMediaTypes">  
+            <list>  
+                <value>text/html;charset=UTF-8</value>  
+            </list>  
+        </property>  
+    </bean>  
+    
+    <mvc:annotation-driven />
+    
 	<!-- <bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
