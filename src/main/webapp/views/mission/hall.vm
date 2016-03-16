@@ -32,10 +32,10 @@
 	<div class="wraper">
 		<div class="rate-header">
 			<span class="rate-total" id="totalCount">
-				有$!{page.totalCount}人在说
+				共有$!{count}个待接手任务
 			</span>
 			<span class="rate-star">
-				总满意度：<span id="rate-star"></span>
+				<span id="rate-star"></span>
 			</span>
 			<div class="rate-timeline" id="avgScore" data-score="$!{page.extendAvgScore}">
 			</div>
