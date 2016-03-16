@@ -1,44 +1,147 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    #parse("common/base.vm")
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-    <title>$TITLE</title>
+	#parse("common/base.vm")
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1,user-scalable=no">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="format-detection" content="telephone=no, address=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<link rel="stylesheet" href="$URL/asset/css/mission/list.css">
+	<link rel="stylesheet" href="$URL/asset/css/ui.css">
+	<title>$TITLE</title>
+	<script>
+		(function (doc, win) {
+		    var docEl = doc.documentElement,
+		        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+		        recalc = function () {
+		            var clientWidth = docEl.clientWidth;
+		            if (!clientWidth) return;
+		            docEl.style.fontSize = 100 * (clientWidth / 320) + 'px';
+		        };
+		 
+		    // Abort if browser does not support addEventListener
+		    if (!doc.addEventListener) return;
+		    win.addEventListener(resizeEvt, recalc, false);
+		    recalc();
+		    //doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);
+    </script>
 </head>
-<body ontouchstart>
-    <div class="weui_msg">
-    <div class="weui_icon_area"><i class="weui_icon_success weui_icon_msg"></i></div>
-    <div class="weui_text_area">
-        <h2 class="weui_msg_title">操作成功</h2>
-        <p class="weui_msg_desc">内容详情，可根据实际需要安排</p>
-    </div>
-    <div class="weui_opr_area">
-        <p class="weui_btn_area">
-            <a href="#" class="weui_btn weui_btn_primary">确定</a>
-            <a href="#" class="weui_btn weui_btn_default">取消</a>
-        </p>
-    </div>
-    <div class="weui_extra_area">
-        <a href="">查看详情</a>
-    </div>
-</div>
-<div id="actionSheet_wrap">
-    <div class="weui_mask_transition" id="mask"></div>
-    <div class="weui_actionsheet" id="weui_actionsheet">
-        <div class="weui_actionsheet_menu">
-            <div class="weui_actionsheet_cell">示例菜单</div>
-            <div class="weui_actionsheet_cell">示例菜单</div>
-            <div class="weui_actionsheet_cell">示例菜单</div>
-            <div class="weui_actionsheet_cell">示例菜单</div>
-        </div>
-        <div class="weui_actionsheet_action">
-            <div class="weui_actionsheet_cell" id="actionsheet_cancel">取消</div>
-        </div>
-    </div>
-</div>
-#parse("common/toast.vm")
-#parse("common/dialog.vm")
-#parse("common/actionSheet.vm")
+<body class="bg-gray">
+	<input type="hidden" id="pageNo" value="$!{pageNo}" />
+	<div class="wraper">
+		<div class="rate-header">
+			<span class="rate-total" id="totalCount">
+				有$!{page.totalCount}人在说
+			</span>
+			<span class="rate-star">
+				总满意度：<span id="rate-star"></span>
+			</span>
+			<div class="rate-timeline" id="avgScore" data-score="$!{page.extendAvgScore}">
+			</div>
+		</div>
+		<div class="rate-lists">
+			<input type="hidden" name="pageNo" id="pageNo" value="$!{page.pageNo}"/>
+			<input type="hidden" name="pageNumber" id="pageNumber" value="$!{page.totalPages}"/>
+			<ul id="comment-content">
+				#if($!{page} && $!{page.result})
+				#foreach($comment in $!{page.result})
+				<li class="rate-item">
+            		<div class="rate-profile rate-middle">
+            			<img src="$URL/static/images/user1.png">
+            			<p class="rate-cus-name"></p>
+            		</div>
+            		<div class="rate-content">
+            			<div class="rate-content-top">
+            				<span>车主：$!{comment.userName}</span>
+            				<span class="rate-time">
+            					$!dateUtil.formateDateToStr($!{comment.createTime}, 'MM-dd HH:mm')
+            				</span>
+            			</div>
+            			<div class="rate-content-info">
+            				<div class="rate-order-type">
+            					$!{comment.brandName}
+            				</div>
+            				<div class="rate-star-wraper" data-score="$!{comment.overallEvaluation}">
+								#set($starOnArray = [1..$!{comment.overallEvaluation}])
+								#set($statOffCount = 5-$!{comment.overallEvaluation})
+								#set($starOffArray = [1..$statOffCount])
+								#if($!{comment.overallEvaluation} != 0)
+                    				#foreach($i in $starOnArray)
+                    					<img alt="$!{i}" src="$URL/static/images/star-on.png" title="gorgeous">
+    								#end
+								#end
+								#if($statOffCount != 0)
+    								#foreach($i in $starOffArray)
+                    					<img alt="$!{i}" src="$URL/static/images/star-off.png" title="gorgeous">
+    								#end
+								#end
+							</div>
+            				<div class="rate-text">
+            					$!{comment.content}
+            				</div>
+            			</div>
+            			<div class="rate-engineer">
+            				<div class="rate-profile">
+            					<img src="$URL/static/images/user1.png">
+            				</div>
+            				<p class="rate-engineer-name">
+            					技师：$!{comment.mechanicName}
+            				</p>
+            				#*<p class="rate-engineer-name">
+            					助手：王彬
+            				</p>*#
+            			</div>
+            		</div>
+            	</li>
+				#end
+				#end
+			</ul>
+			<div class="rate-timeline rata-timeline-full">
+			</div>
+		</div>
+		<div class="loading">
+			正在加载更多...
+		</div>
+	</div>
+	#parse("common/tab.vm")
+	<script type="text/html" id="comment-item">
+	<li class="rate-item">
+		<div class="rate-profile rate-middle">
+			<img src="$URL/static/images/user1.png">
+			<p class="rate-cus-name"></p>
+		</div>
+		<div class="rate-content">
+			<div class="rate-content-top">
+				<span>车主：NAME</span>
+				<span class="rate-time">
+					CREATETIME
+				</span>
+			</div>
+			<div class="rate-content-info">
+				<div class="rate-order-type">
+					BRANDNAME
+				</div>
+				<div class="rate-star-wraper" data-score="SCORE">
+					
+				</div>
+				<div class="rate-text">
+					COMMENT
+				</div>
+			</div>
+			<div class="rate-engineer">
+				<div class="rate-profile">
+					<img src="$URL/static/images/user1.png">
+				</div>
+				<p class="rate-engineer-name">
+					技师：MECHANICNAME
+				</p>
+				#*<p class="rate-engineer-name">
+					助手：王彬
+				</p>*#
+			</div>
+		</div>
+	</li>
+    </script>
+	
 </body>
-</html>

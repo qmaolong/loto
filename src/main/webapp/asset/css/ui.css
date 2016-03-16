@@ -1,0 +1,69 @@
+.nn-poptip-error i:before,.nn-poptip-info i:before,.nn-poptip-success i:before,.nn-poptip-warn i:before {
+    background-image: url(../../static/images/dialog.sprite.png?v=8364fa875e23fa4815275d4a1a3f2af6)
+}
+
+.nn-poptip {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999
+}
+
+.nn-poptip .nn-poptip-cnt {
+    background-color: rgba(0,0,0,.6);
+    line-height: 40px;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    overflow: hidden
+}
+
+.nn-poptip i {
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    position: relative;
+    overflow: visible;
+    margin-right: 8px;
+    margin-left: 0;
+    font-size: 20px;
+    vertical-align: middle
+}
+
+.nn-poptip i:before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: -23px;
+    -webkit-transform: scale(.25);
+    transform: scale(.25);
+    top: -34px
+}
+
+.nn-poptip-info i:before {
+    background-position: -90px 0;
+    width: 70px;
+    height: 70px
+}
+
+.nn-poptip-success i:before {
+    background-position: -90px -90px;
+    width: 70px;
+    height: 70px
+}
+
+.nn-poptip-warn i:before {
+    background-position: -180px 0;
+    width: 70px;
+    height: 70px
+}
+
+.nn-poptip-error i:before {
+    background-position: 0 0;
+    width: 70px;
+    height: 70px
+}

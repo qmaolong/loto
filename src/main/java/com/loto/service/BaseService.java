@@ -2,8 +2,8 @@ package com.loto.service;
 
 import java.util.List;
 
-import com.github.pagehelper.PageInfo;
 import com.loto.dao.BaseDao;
+import com.loto.vo.PageInfo;
 
 public abstract class BaseService<D, M> {
 	
@@ -12,6 +12,7 @@ public abstract class BaseService<D, M> {
 	}
 	
 	public PageInfo<D> findByExample(M exam, Integer pageNum, Integer pageSize){
+		com.github.pagehelper.PageHelper.startPage(pageNum, pageSize, true);
 		List<D> list = getBaseDao().selectByExample(exam);
 		PageInfo<D> pageInfo = new PageInfo<D>(list);
 		
