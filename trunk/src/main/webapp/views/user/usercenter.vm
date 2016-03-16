@@ -1,44 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    #parse("common/base.vm")
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-    <title>$TITLE</title>
+	#parse("common/base.vm")
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1,user-scalable=no">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="format-detection" content="telephone=no, address=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<title>会员中心</title>
+	<link rel="stylesheet" href="$URL/asset/css/ui.css">
+	<link rel="stylesheet" href="$URL/asset/css/user.css">
+	<link rel="stylesheet" href="$URL/asset/css/lib.css">
 </head>
-<body ontouchstart>
-    <div class="weui_msg">
-    <div class="weui_icon_area"><i class="weui_icon_success weui_icon_msg"></i></div>
-    <div class="weui_text_area">
-        <h2 class="weui_msg_title">操作成功</h2>
-        <p class="weui_msg_desc">内容详情，可根据实际需要安排</p>
-    </div>
-    <div class="weui_opr_area">
-        <p class="weui_btn_area">
-            <a href="#" class="weui_btn weui_btn_primary">确定</a>
-            <a href="#" class="weui_btn weui_btn_default">取消</a>
-        </p>
-    </div>
-    <div class="weui_extra_area">
-        <a href="">查看详情</a>
-    </div>
-</div>
-<div id="actionSheet_wrap">
-    <div class="weui_mask_transition" id="mask"></div>
-    <div class="weui_actionsheet" id="weui_actionsheet">
-        <div class="weui_actionsheet_menu">
-            <div class="weui_actionsheet_cell">示例菜单</div>
-            <div class="weui_actionsheet_cell">示例菜单</div>
-            <div class="weui_actionsheet_cell">示例菜单</div>
-            <div class="weui_actionsheet_cell">示例菜单</div>
-        </div>
-        <div class="weui_actionsheet_action">
-            <div class="weui_actionsheet_cell" id="actionsheet_cancel">取消</div>
-        </div>
-    </div>
-</div>
-#parse("common/toast.vm")
-#parse("common/dialog.vm")
-#parse("common/tab.vm")
+<body>
+	<div id="content">
+		#* 会员信息区域 *#
+		<div class="m-user-wrap">
+			<div class="m-user">
+				<div class="m-profile-wrap">
+					<div class="m-avatar">
+						<img src="$URL/asset/img/member/profile.jpg"/>
+					</div>
+					<div class="m-profile">
+						<p class="m-profile-name">
+							$!{username}
+						</p>
+						<!--<p class="m-profile-phone">
+							$!{username}
+						</p>-->
+					</div>
+				</div>
+				#if($!{userQrCode})
+				<div class="m-profile-qrcode">
+					<img src="$!toolUtil.fillImgUrl($!{userQrCode})" onclick="$(this).ImgZoomIn();">
+				</div>
+				#end
+				<div class="m-user-money">
+					<div class="form-item" onclick="location.href='$URL/rp/myRP'">
+						<label class="label">
+                            邀好友赚红包
+						</label>
+						<span class="label-value">
+							<span class="m-user-money-label">
+								当前红包金额：
+							</span>
+							￥$!{allAmount}
+						</span>
+						<i class="icon-arrow right"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		#* 卡包优惠券 *#
+		<div class="section m-card">
+			<div class="form-wrap">
+				<div class="form-item m-no-line">
+					<a href="$URL/card/myCards">
+					<label class="label">
+						<i class="icon-card"></i>
+						我的卡包
+					</label>
+					<i class="icon-arrow right"></i>
+					</a>
+				</div>
+			</div>
+            <div class="m-card-list swiper-container perview-slider" id="m-card-list">
+                <div class="swiper-wrapper">
+					#foreach($cardHolding in $!{cardHoldings})
+                        <div class="swiper-slide m-card-item" onclick="location.href='$URL/card/viewCard?holdingId=$!{cardHolding.id}&orgId=$!{cardHolding.orgId}'">
+                            <div class="m-card-logo">
+								#if($!{cardHolding.cardType} == 'measureCard')
+                                    <img src="$!toolUtil.fillImgUrl($!{cardHolding.orgLogo})" onerror="this.src='$URL/asset/img/member/profile.jpg'">
+								#else
+                                    <img src="$URL$!{cardHolding.orgLogo}" onerror="this.src='$URL/asset/img/member/profile.jpg'">
+								#end
+                            </div>
+                            <div class="m-card-info">
+                                <p class="m-card-name">
+									$!{cardHolding.cardName}
+                                </p>
+								#if($!{cardHolding.holdingDetail})
+									#set($cardHoldingDetail = $!{cardHolding.holdingDetail})
+                                    <p class="m-card-desc">
+										$!{cardHoldingDetail.suiteTypeName}：$!{cardHoldingDetail.usageTimes}次（剩$!{cardHoldingDetail.remainedTimes}次）
+                                    </p>
+								#elseif(${cardHolding.cardType} == 'prepaidCard')
+                                    <p class="m-card-desc">
+										余额：$toolUtil.setScale($!{cardHolding.availAmount})元
+                                    </p>
+								#end
+                            </div>
+                        </div>
+					#end
+                </div>
+            </div>
+			<div class="form-wrap">
+				<div class="form-item">
+					<a href="$URL/coupon/myCoupon">
+					<label class="label">
+						<i class="icon-ticket"></i>
+						我的券夹
+					</label>
+					<i class="icon-arrow right"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		#* 订单 *#
+		<div class="section">
+			<div class="form-wrap">
+				#*<div class="form-item">
+					<a href="$URL/repair/appointmentList">
+					<label class="label">
+						<i class="icon-time"></i>
+						我的预约
+					</label>
+					<i class="icon-arrow right"></i>
+					</a>
+				</div>*#
+				<div class="form-item">
+					<a href="$URL/customer/myorder">
+					<label class="label">
+						<i class="icon-list"></i>
+						我的订单
+					</label>
+					<i class="icon-arrow right"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+		#* 检测报告与车库信息 *#
+		<div class="section">
+			<div class="form-wrap" >
+				<!--<div class="form-item">
+					<label class="label">
+						<i class="icon-car"></i>
+						我的车库
+					</label>
+					<span class="label-value order-city" id="cityLi">
+					</span>
+					<i class="icon-arrow right"></i>
+				</div>-->
+				<div class="form-item">
+					<a href="$URL/wechat/user/myLatestReport">
+					<label class="label">
+						<i class="icon-edit"></i>
+						检测报告
+					</label>
+					<i class="icon-arrow right"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

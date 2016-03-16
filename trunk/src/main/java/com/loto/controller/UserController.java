@@ -19,7 +19,11 @@ public class UserController extends BaseController<User, UserExample>{
 		return userService;
 	}
 	
-	
+	@RequestMapping("usercenter")
+	public String userCenter(){
+		
+		return "user/usercenter";
+	}
 	
 
 }
