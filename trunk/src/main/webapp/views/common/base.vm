@@ -2,7 +2,6 @@
 #set($TITLE = "loto")
 <link type="text/css" rel="stylesheet" href="$URL/asset/css/weui.min.css?v=1"></link>
 <script type="text/javascript" src="$URL/asset/js/zepto.min.js"></script>
-<script type="text/javascript" src="$URL/asset/js/flexible.min.js"></script>
 <script type="text/javascript">
 	var url = '$URL';
 </script>
