@@ -156,5 +156,6 @@
 			</div>
 		</div>
 	</div>
+	#parse("common/tab.vm")
 </body>
 </html>
