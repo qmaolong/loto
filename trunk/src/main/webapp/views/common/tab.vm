@@ -1,7 +1,7 @@
 <div class="weui_tabbar">
-    <a href="$URL/mission/hall" class="weui_tabbar_item weui_bar_item_on">
+    <a href="$URL/mission/hall" class="weui_tabbar_item mission_tab">
         <div class="weui_tabbar_icon">
-            <img src="$URL/asset/img/icon_nav_button.png" alt="">
+            <img src="$URL/asset/img/icon_nav_article.png" alt="">
         </div>
         <p class="weui_tabbar_label">任务大厅</p>
     </a>
@@ -17,10 +17,19 @@
         </div>
         <p class="weui_tabbar_label">发现</p>
     </a>-->
-    <a href="$URL/user/usercenter" class="weui_tabbar_item">
+    <a href="$URL/user/usercenter" class="weui_tabbar_item user_tab">
         <div class="weui_tabbar_icon">
             <img src="$URL/asset/img/icon_nav_cell.png" alt="">
         </div>
         <p class="weui_tabbar_label">个人中心</p>
     </a>
 </div>
+<script type="text/javascript">
+var href = location.href;
+$(".weui_tabbar_item").removeClass("weui_bar_item_on");
+if(href.indexOf("/mission/")>=0){
+	$(".mission_tab").addClass("weui_bar_item_on");
+}else if(href.indexOf("/user/")>=0){
+	$(".user_tab").addClass("weui_bar_item_on");
+}
+</script>
