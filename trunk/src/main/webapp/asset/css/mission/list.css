@@ -47,7 +47,8 @@ button,input,select {
 
 .page,.wraper {
     font-family: "Microsoft YaHei UI","微软雅黑","宋体";
-    font-size: 12.67px
+    font-size: 12.67px;
+    margin-bottom:50px
 }
 
 .page {
@@ -1512,7 +1513,7 @@ button,input,select {
 }
 
 .rate-item {
-    padding: .1rem .06667rem;
+    padding: .05rem .06667rem;
     display: -webkit-box
 }
 
