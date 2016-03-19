@@ -24,7 +24,7 @@
 					</div>
 					<div class="m-profile">
 						<p class="m-profile-name">
-							$!{username}
+							LongLongAgo
 						</p>
 						<!--<p class="m-profile-phone">
 							$!{username}
@@ -39,13 +39,13 @@
 				<div class="m-user-money">
 					<div class="form-item" onclick="location.href='$URL/rp/myRP'">
 						<label class="label">
-                            邀好友赚红包
+							
 						</label>
 						<span class="label-value">
 							<span class="m-user-money-label">
-								当前红包金额：
+								当前账户金额：
 							</span>
-							￥$!{allAmount}
+							￥0
 						</span>
 						<i class="icon-arrow right"></i>
 					</div>

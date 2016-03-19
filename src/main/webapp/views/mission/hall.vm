@@ -6,8 +6,8 @@
 	<meta name="format-detection" content="telephone=no, address=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-	<link rel="stylesheet" href="$URL/asset/css/mission/list.css?v=1">
-	<link rel="stylesheet" href="$URL/asset/css/ui.css">
+	<link rel="stylesheet" href="$URL/asset/css/mission/list.css?v=11">
+	<link rel="stylesheet" href="$URL/asset/css/ui.css?v=11">
 	<title>$TITLE</title>
 	<script>
 		(function (doc, win) {
@@ -50,16 +50,7 @@
             			<p class="rate-cus-name"></p>
             		</div>
             		<div class="rate-content">
-            			<!--<div class="rate-content-top">
-            				<span></span>
-            				<span class="rate-time">
-            					$!dateUtil.formateDateToStr($!{comment.createTime}, 'MM-dd HH:mm')
-            				</span>
-            			</div>-->
             			<div class="rate-content-info">
-            				<!--<div class="rate-order-type">
-            					扫码试玩，须苹果手机首次关注下载
-							</div>-->
             				<div class="rate-text">
             					<a href='#' class='tag1'>￥0.3</a>&nbsp;<a href='#' class='tag2'>余143</a>
 								<span>扫码试玩，须苹果手机首次关注下载，安卓手机勿安卓手机勿扰……<span>
@@ -70,9 +61,146 @@
             				<p class="rate-engineer-name">
             					
             				</p>
-            				#*<p class="rate-engineer-name">
-            					助手：王彬
-            				</p>*#
+            			</div>
+            		</div>
+            	</li>
+				<li class="rate-item">
+            		<div class="rate-profile rate-middle">
+            			<img src="$URL/asset/img/user1.png">
+            			<p class="rate-cus-name"></p>
+            		</div>
+            		<div class="rate-content">
+            			<div class="rate-content-info">
+            				<div class="rate-text">
+            					<a href='#' class='tag1'>￥0.3</a>&nbsp;<a href='#' class='tag2'>余143</a>
+								<span>扫码试玩，须苹果手机首次关注下载，安卓手机勿安卓手机勿扰……<span>
+            				</div>
+            			</div>
+            			<div class="rate-engineer">
+                            <a href='#' class='button'>接手</a>
+            				<p class="rate-engineer-name">
+            					
+            				</p>
+            			</div>
+            		</div>
+            	</li>
+				<li class="rate-item">
+            		<div class="rate-profile rate-middle">
+            			<img src="$URL/asset/img/user1.png">
+            			<p class="rate-cus-name"></p>
+            		</div>
+            		<div class="rate-content">
+            			<div class="rate-content-info">
+            				<div class="rate-text">
+            					<a href='#' class='tag1'>￥0.3</a>&nbsp;<a href='#' class='tag2'>余143</a>
+								<span>扫码试玩，须苹果手机首次关注下载，安卓手机勿安卓手机勿扰……<span>
+            				</div>
+            			</div>
+            			<div class="rate-engineer">
+                            <a href='#' class='button'>接手</a>
+            				<p class="rate-engineer-name">
+            					
+            				</p>
+            			</div>
+            		</div>
+            	</li>
+				<li class="rate-item">
+            		<div class="rate-profile rate-middle">
+            			<img src="$URL/asset/img/user1.png">
+            			<p class="rate-cus-name"></p>
+            		</div>
+            		<div class="rate-content">
+            			<div class="rate-content-info">
+            				<div class="rate-text">
+            					<a href='#' class='tag1'>￥0.3</a>&nbsp;<a href='#' class='tag2'>余143</a>
+								<span>扫码试玩，须苹果手机首次关注下载，安卓手机勿安卓手机勿扰……<span>
+            				</div>
+            			</div>
+            			<div class="rate-engineer">
+                            <a href='#' class='button'>接手</a>
+            				<p class="rate-engineer-name">
+            					
+            				</p>
+            			</div>
+            		</div>
+            	</li>
+				<li class="rate-item">
+            		<div class="rate-profile rate-middle">
+            			<img src="$URL/asset/img/user1.png">
+            			<p class="rate-cus-name"></p>
+            		</div>
+            		<div class="rate-content">
+            			<div class="rate-content-info">
+            				<div class="rate-text">
+            					<a href='#' class='tag1'>￥0.3</a>&nbsp;<a href='#' class='tag2'>余143</a>
+								<span>扫码试玩，须苹果手机首次关注下载，安卓手机勿安卓手机勿扰……<span>
+            				</div>
+            			</div>
+            			<div class="rate-engineer">
+                            <a href='#' class='button'>接手</a>
+            				<p class="rate-engineer-name">
+            					
+            				</p>
+            			</div>
+            		</div>
+            	</li>
+				<li class="rate-item">
+            		<div class="rate-profile rate-middle">
+            			<img src="$URL/asset/img/user1.png">
+            			<p class="rate-cus-name"></p>
+            		</div>
+            		<div class="rate-content">
+            			<div class="rate-content-info">
+            				<div class="rate-text">
+            					<a href='#' class='tag1'>￥0.3</a>&nbsp;<a href='#' class='tag2'>余143</a>
+								<span>扫码试玩，须苹果手机首次关注下载，安卓手机勿安卓手机勿扰……<span>
+            				</div>
+            			</div>
+            			<div class="rate-engineer">
+                            <a href='#' class='button'>接手</a>
+            				<p class="rate-engineer-name">
+            					
+            				</p>
+            			</div>
+            		</div>
+            	</li>
+				<li class="rate-item">
+            		<div class="rate-profile rate-middle">
+            			<img src="$URL/asset/img/user1.png">
+            			<p class="rate-cus-name"></p>
+            		</div>
+            		<div class="rate-content">
+            			<div class="rate-content-info">
+            				<div class="rate-text">
+            					<a href='#' class='tag1'>￥0.3</a>&nbsp;<a href='#' class='tag2'>余143</a>
+								<span>扫码试玩，须苹果手机首次关注下载，安卓手机勿安卓手机勿扰……<span>
+            				</div>
+            			</div>
+            			<div class="rate-engineer">
+                            <a href='#' class='button'>接手</a>
+            				<p class="rate-engineer-name">
+            					
+            				</p>
+            			</div>
+            		</div>
+            	</li>
+				<li class="rate-item">
+            		<div class="rate-profile rate-middle">
+            			<img src="$URL/asset/img/user1.png">
+            			<p class="rate-cus-name"></p>
+            		</div>
+            		<div class="rate-content">
+            			<div class="rate-content-info">
+            				<div class="rate-text">
+            					<a href='#' class='tag1'>￥0.3</a>&nbsp;<a href='#' class='tag2'>余143</a>
+								<span>扫码试玩，须苹果手机首次关注下载，安卓手机勿安卓手机勿扰……<span>
+            				</div>
+            			</div>
+            			<div class="rate-engineer">
+                            <a href='#' class='button'>接手</a>
+            				<p class="rate-engineer-name">
+            					
+            				</p>
             			</div>
             		</div>
             	</li>
