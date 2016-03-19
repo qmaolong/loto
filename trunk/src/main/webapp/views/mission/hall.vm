@@ -44,11 +44,9 @@
 			<input type="hidden" name="pageNo" id="pageNo" value="$!{page.pageNo}"/>
 			<input type="hidden" name="pageNumber" id="pageNumber" value="$!{page.totalPages}"/>
 			<ul id="comment-content">
-				#if($!{page} && $!{page.result})
-				#foreach($comment in $!{page.result})
 				<li class="rate-item">
             		<div class="rate-profile rate-middle">
-            			<img src="$URL/static/images/user1.png">
+            			<img src="$URL/asset/img/user1.png">
             			<p class="rate-cus-name"></p>
             		</div>
             		<div class="rate-content">
@@ -62,28 +60,13 @@
             				<div class="rate-order-type">
             					$!{comment.brandName}
             				</div>
-            				<div class="rate-star-wraper" data-score="$!{comment.overallEvaluation}">
-								#set($starOnArray = [1..$!{comment.overallEvaluation}])
-								#set($statOffCount = 5-$!{comment.overallEvaluation})
-								#set($starOffArray = [1..$statOffCount])
-								#if($!{comment.overallEvaluation} != 0)
-                    				#foreach($i in $starOnArray)
-                    					<img alt="$!{i}" src="$URL/static/images/star-on.png" title="gorgeous">
-    								#end
-								#end
-								#if($statOffCount != 0)
-    								#foreach($i in $starOffArray)
-                    					<img alt="$!{i}" src="$URL/static/images/star-off.png" title="gorgeous">
-    								#end
-								#end
-							</div>
             				<div class="rate-text">
             					$!{comment.content}
             				</div>
             			</div>
             			<div class="rate-engineer">
             				<div class="rate-profile">
-            					<img src="$URL/static/images/user1.png">
+            					<img src="$URL/asset/img/user1.png">
             				</div>
             				<p class="rate-engineer-name">
             					技师：$!{comment.mechanicName}
@@ -94,8 +77,6 @@
             			</div>
             		</div>
             	</li>
-				#end
-				#end
 			</ul>
 			<div class="rate-timeline rata-timeline-full">
 			</div>
@@ -143,5 +124,5 @@
 		</div>
 	</li>
     </script>
-	
+	<script type="text/javascript" src="$URL/asset/js/mission/mission.js">
 </body>
