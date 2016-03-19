@@ -1,5 +1,5 @@
 #set($URL = "$!{req.contextPath}")
-#set($TITLE = "骆驼街")
+#set($TITLE = "loto")
 <link type="text/css" rel="stylesheet" href="$URL/asset/css/weui.min.css"></link>
 <script type="text/javascript" src="$URL/asset/js/zepto.min.js"></script>
 <script type="text/javascript">
