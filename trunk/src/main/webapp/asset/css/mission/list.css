@@ -1493,9 +1493,9 @@ button,input,select {
 }
 
 .rate-timeline {
-    height: 35%;
+    height: 100%;
     width: 4px;
-    border-right: 1px solid #262626;
+    border-right: 1px dotted #000000;
     bottom: 0;
     left: .13333rem;
     position: fixed;
@@ -1518,7 +1518,7 @@ button,input,select {
 
 .rate-item .rate-profile {
     display: inline-block;
-    width: .24667rem;
+    width: .20rem;
     -webkit-box-flex: 1
 }
 
@@ -1594,7 +1594,7 @@ button,input,select {
 
 .rate-text {
     color: #999;
-    font-size: 11.33px;
+    font-size: 13.33px;
     max-height:.5rem;
 }
 
@@ -1671,7 +1671,7 @@ button,input,select {
   width:31px;
   color:#ffffff;
   background-color:#ededed;
-  font-size:8px;
+  font-size:11px;
   font-weight:normal;
   font-family:Microsoft YaHei;
   background:-webkit-gradient(linear, left top, left bottom, color-start(0.05, #ee5555), color-stop(1, #bd0d14));
@@ -1718,7 +1718,7 @@ button,input,select {
   width:36px;
   color:#ffffff;
   background-color:#ededed;
-  font-size:8px;
+  font-size:11px;
   font-weight:normal;
   font-family:Microsoft YaHei;
   background:-webkit-gradient(linear, left top, left bottom, color-start(0.05, #8cd87f), color-stop(1, #a6d874));
