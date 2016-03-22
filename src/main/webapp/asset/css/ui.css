@@ -1,5 +1,5 @@
 .nn-poptip-error i:before,.nn-poptip-info i:before,.nn-poptip-success i:before,.nn-poptip-warn i:before {
-    background-image: url(../../static/images/dialog.sprite.png?v=8364fa875e23fa4815275d4a1a3f2af6)
+    background-image: url(../../asset/img/dialog.sprite.png?v=8364fa875e23fa4815275d4a1a3f2af6)
 }
 
 .nn-poptip {

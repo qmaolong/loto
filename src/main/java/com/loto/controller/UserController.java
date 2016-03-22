@@ -25,5 +25,23 @@ public class UserController extends BaseController<User, UserExample>{
 		return "user/usercenter";
 	}
 	
+	@RequestMapping("tradingInfo")
+	public String tradingInfo(){
+		
+		return "/trading-info";
+	}
+	
+	@RequestMapping("sendMissionHistory")
+	public String sendHistory(){
+		
+		return "user/send-history";
+	}
+	
+	@RequestMapping("receivedMissionHistory")
+	public String receivedHistory(){
+		
+		return "user/received-history";
+	}
+	
 
 }

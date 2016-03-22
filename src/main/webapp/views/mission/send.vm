@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    #parse("common/base.vm")
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1,user-scalable=no">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="format-detection" content="telephone=no, address=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<link rel="stylesheet" href="$URL/asset/css/lib.css">
+    <link rel="stylesheet" href="${URL}/asset/css/repair.min.css?v=$!toolUtil.getVersionTimestamp()">
+	<link type="text/css" rel="stylesheet" href="$URL/asset/css/ui.css?v=$!toolUtil.getVersionTimestamp()"></link>
+    <script type="text/javascript" src="$URL/asset/js/flexible.min.js"></script>
+	<title>故障报修</title>
+</head>
+<body class="bg-gray" style="height:100%;width:100%;position:absolute;">
+<form >
+<input type="hidden" name="brandId" id="brandId" value="$!{latestCar.brandId}" needVerify="yes" verify="NotNull" alias="品牌" />
+<input type="hidden" name="seriesId" id="seriesId" value="$!{latestCar.seriesId}" needVerify="yes" verify="NotNull" alias="车系" />
+<input type="hidden" name="modelId" id="modelId" value="$!{latestCar.modelsId}" needVerify="yes"  verify="NotNull" alias="车型" />
+<input type="hidden" name="brandName" id="brandName" value="$!{latestCar.brandName}"/>
+<input type="hidden" name="seriesName" id="seriesName" value="$!{latestCar.seriesName}" />
+<input type="hidden" name="modelName" id="modelName" value="$!{latestCar.modelsName}" />
+
+<div class="page">
+    <div class="repair-detail-wrap">
+        <div class="repair-detail-inner">
+            <h3 class="repair-detail-header">发布指南：</h3>
+            <p class="repair-detail-desc">
+              迅速响应，上门诊断，到店维修，高端、正品、平价服务。<br/><br/>
+			完成故障维修，免诊断费49元。
+            </p>
+            <span class="repair-detail-more" onclick="location.href='http://mp.weixin.qq.com/s?__biz=MzA4NDA5MjE2Ng==&mid=400996747&idx=1&sn=cc3267a086594cc026749abafc1e40f1#rd'">详细介绍</span>
+        </div>
+    </div>
+    <!-- 品牌车系 -->
+    <div class="section">
+        <div class="form-wrap">
+            <div class="form-item">
+                <label class="label">
+                    <i class="icon-car"></i>
+						<span>
+							标题：
+						</span>
+                </label>
+                <span class="label-value">
+						<input type="text" id="mobileNo" class="flat-text text-align-right" value="$!{userVo.mobileNumber}" verify="NotNull&&mobilePhone" alias="任务标题" placeholder="请输入任务标题（必填 ）">
+					</span>
+            </div>
+        </div>
+    </div>
+    <!-- 爱车故障描述 -->
+    <div class="section form-wrap">
+        <div class="form-item">
+				<span class="label-value">
+					<textarea name="" class="flat-text remark-area" id="faultDesc" cols="30" rows="5" verify="NotNull" alias="任务描述" style="line-height:normal;text-align:left;" placeholder="请在此简单描述任务详情…"></textarea>
+				</span>
+        </div>
+        <div class="form-item">
+            <ul id="dndArea" class="repair-upload-list">
+                <li>
+                    <div class="repair-add-images" id="filePicker">
+                        +
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 验证码 -->
+    <div class="section repair-clear">
+        <div class="form-wrap">
+            <div class="form-item">
+                <label class="label">
+                    <i class="icon-mobile"></i>
+						<span>
+							每单价格：
+						</span>
+                </label>
+					<span class="label-value">
+						<input type="text" id="mobileNo" class="flat-text text-align-right" value="$!{userVo.mobileNumber}" verify="NotNull&&mobilePhone" alias="每单价格" placeholder="请输入每单价格（必填 ）">
+					</span>
+            </div>
+            <div class="form-item">
+                <label class="label">
+                    <i class="icon-code"></i>
+						<span>
+							任务数量：
+						</span>
+                </label>
+					<span class="label-value">
+						<input type="text" id="verifyCode" class="flat-text text-align-right" verify="NotNull" alias="任务数量" placeholder="请输入任务数量">
+					</span>
+            </div>
+        </div>
+    </div>
+    <div class="section fixed">
+        <div class="summary-area">
+            <button class="button blue" type="button" id="appointmentSubmit">发布任务</button>
+        </div>
+    </div>
+</div>
+<div class="page-step" id="car-panel">
+    <div id="container">
+
+    </div>
+    <div id="slider">
+
+    </div>
+</div>
+</form>
+<script src="$URL/asset/js/lib.all.min.js?v=$!toolUtil.getVersionTimestamp()"></script>
+<script type="text/javascript" src="$URL/asset/js/dialog.min.js?v=$!toolUtil.getVersionTimestamp()"></script>
+<script src="$URL/asset/js/order.min.js?v=$!toolUtil.getVersionTimestamp()"></script>
+<script type="text/javascript" src="$URL/asset/js/mobile-verify.js?v=$!toolUtil.getVersionTimestamp()"></script>
+<script src="$URL/asset/js/verify-code.js?v=$!toolUtil.getVersionTimestamp()"></script>
+<script src="$URL/asset/js/repair.js?v=$!toolUtil.getVersionTimestamp()"></script>
+</body>
+</html>
