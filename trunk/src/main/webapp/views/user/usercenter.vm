@@ -8,7 +8,7 @@
 	<meta name="format-detection" content="telephone=no, address=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-	<title>会员中心</title>
+	<title>个人中心</title>
 	<script type="text/javascript" src="$URL/asset/js/flexible.min.js"></script>
 	<link rel="stylesheet" href="$URL/asset/css/ui.css">
 	<link rel="stylesheet" href="$URL/asset/css/user.css">
@@ -57,52 +57,11 @@
 		#* 卡包优惠券 *#
 		<div class="section m-card">
 			<div class="form-wrap">
-				<div class="form-item m-no-line">
-					<a href="$URL/card/myCards">
-					<label class="label">
-						<i class="icon-card"></i>
-						我的卡包
-					</label>
-					<i class="icon-arrow right"></i>
-					</a>
-				</div>
-			</div>
-            <div class="m-card-list swiper-container perview-slider" id="m-card-list">
-                <div class="swiper-wrapper">
-					#foreach($cardHolding in $!{cardHoldings})
-                        <div class="swiper-slide m-card-item" onclick="location.href='$URL/card/viewCard?holdingId=$!{cardHolding.id}&orgId=$!{cardHolding.orgId}'">
-                            <div class="m-card-logo">
-								#if($!{cardHolding.cardType} == 'measureCard')
-                                    <img src="$!toolUtil.fillImgUrl($!{cardHolding.orgLogo})" onerror="this.src='$URL/asset/img/member/profile.jpg'">
-								#else
-                                    <img src="$URL$!{cardHolding.orgLogo}" onerror="this.src='$URL/asset/img/member/profile.jpg'">
-								#end
-                            </div>
-                            <div class="m-card-info">
-                                <p class="m-card-name">
-									$!{cardHolding.cardName}
-                                </p>
-								#if($!{cardHolding.holdingDetail})
-									#set($cardHoldingDetail = $!{cardHolding.holdingDetail})
-                                    <p class="m-card-desc">
-										$!{cardHoldingDetail.suiteTypeName}：$!{cardHoldingDetail.usageTimes}次（剩$!{cardHoldingDetail.remainedTimes}次）
-                                    </p>
-								#elseif(${cardHolding.cardType} == 'prepaidCard')
-                                    <p class="m-card-desc">
-										余额：$toolUtil.setScale($!{cardHolding.availAmount})元
-                                    </p>
-								#end
-                            </div>
-                        </div>
-					#end
-                </div>
-            </div>
-			<div class="form-wrap">
 				<div class="form-item">
-					<a href="$URL/coupon/myCoupon">
+					<a href="$URL/mission/sendMission">
 					<label class="label">
-						<i class="icon-ticket"></i>
-						我的券夹
+						<i class="icon-edit"></i>
+						发布任务
 					</label>
 					<i class="icon-arrow right"></i>
 					</a>
@@ -123,10 +82,10 @@
 					</a>
 				</div>*#
 				<div class="form-item">
-					<a href="$URL/customer/myorder">
+					<a href="$URL/user/sendMissionHistory">
 					<label class="label">
 						<i class="icon-list"></i>
-						我的订单
+						我发布的任务
 					</label>
 					<i class="icon-arrow right"></i>
 					</a>
@@ -146,10 +105,10 @@
 					<i class="icon-arrow right"></i>
 				</div>-->
 				<div class="form-item">
-					<a href="$URL/wechat/user/myLatestReport">
+					<a href="$URL/user/receivedMissionHistory">
 					<label class="label">
-						<i class="icon-edit"></i>
-						检测报告
+						<i class="icon-ticket"></i>
+						我接手的任务
 					</label>
 					<i class="icon-arrow right"></i>
 					</a>

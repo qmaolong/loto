@@ -183,7 +183,7 @@ button,input,select {
 }
 
 .form-item-line {
-    background: url(../../static/images/img-line.png) left bottom no-repeat;
+    background: url(../../asset/img/img-line.png) left bottom no-repeat;
     background-size: 100%
 }
 
@@ -233,7 +233,7 @@ button,input,select {
     display: block;
     height: 10px;
     width: 100%;
-    background: url(../../static/images/curve.png) repeat-x;
+    background: url(../../asset/img/curve.png) repeat-x;
     background-size: 5%
 }
 
@@ -261,7 +261,7 @@ button,input,select {
 
 .form-item {
     padding: .46875rem 0;
-    background: url(../../static/images/img-line.png) left bottom no-repeat;
+    background: url(../../asset/img/img-line.png) left bottom no-repeat;
     background-size: 100% 1px
 }
 
@@ -390,8 +390,8 @@ button,input,select {
 
 @font-face {
     font-family: nnicon;
-    src: url(../../static/font/nnicon.eot);
-    src: url(../../static/font/nnicon.eot?#iefix) format("eot"),url(../../static/font/nnicon.woff) format("woff"),url(../../static/font/nnicon.ttf) format("truetype"),url(../../static/font/nnicon.svg#nnicon) format("svg")
+    src: url(../../asset/font/nnicon.eot);
+    src: url(../../asset/font/nnicon.eot?#iefix) format("eot"),url(../../asset/font/nnicon.woff) format("woff"),url(../../asset/font/nnicon.ttf) format("truetype"),url(../../asset/font/nnicon.svg#nnicon) format("svg")
 }
 
 .bg-yellow {
@@ -411,7 +411,7 @@ button,input,select {
 }
 
 .img-line {
-    background: url(../../static/images/cashVoucher/img-line.png) bottom center no-repeat;
+    background: url(../../asset/img/cashVoucher/img-line.png) bottom center no-repeat;
     background-size: 100%
 }
 
@@ -766,7 +766,7 @@ button,input,select {
 }
 
 .empty-img {
-    background: url(../../static/images/empty.png);
+    background: url(../../asset/img/empty.png);
     background-size: 100%;
     width: 2.8125rem;
     height: 2.8125rem;
@@ -782,12 +782,12 @@ button,input,select {
 }
 
 .img-line.gray {
-    background: url(../../static/images/img-line.png) left bottom no-repeat;
+    background: url(../../asset/img/img-line.png) left bottom no-repeat;
     background-size: 100%
 }
 
 .img-line.white {
-    background: url(../../static/images/report-item-line.png) left bottom no-repeat;
+    background: url(../../asset/img/report-item-line.png) left bottom no-repeat;
     background-size: 100%
 }
 
@@ -984,8 +984,8 @@ button,input,select {
 
 @font-face {
     font-family: nnicon;
-    src: url(../../static/font/nnicon.eot);
-    src: url(../../static/font/nnicon.eot?#iefix) format("eot"),url(../../static/font/nnicon.woff) format("woff"),url(../../static/font/nnicon.ttf) format("truetype"),url(../../static/font/nnicon.svg#nnicon) format("svg")
+    src: url(../../asset/font/nnicon.eot);
+    src: url(../../asset/font/nnicon.eot?#iefix) format("eot"),url(../../asset/font/nnicon.woff) format("woff"),url(../../asset/font/nnicon.ttf) format("truetype"),url(../../asset/font/nnicon.svg#nnicon) format("svg")
 }
 
 .checkbox .regular-radio:checked+label:before,.checkbox>label:before,.icon-badge:before,.icon-benefit:before,.icon-benefito:before,.icon-car:before,.icon-card:before,.icon-checked:before,.icon-checkmark:before,.icon-clipboard:before,.icon-code:before,.icon-correct:before,.icon-coupon2:before,.icon-coupon:before,.icon-cross:before,.icon-edit2:before,.icon-edit:before,.icon-file-text:before,.icon-file:before,.icon-img:before,.icon-inquiry:before,.icon-inquiryo:before,.icon-list:before,.icon-location:before,.icon-message:before,.icon-mobile:before,.icon-money:before,.icon-my:before,.icon-myo:before,.icon-navigation:before,.icon-nochecked:before,.icon-omit:before,.icon-openfolder:before,.icon-order:before,.icon-ordero:before,.icon-packge:before,.icon-phone2:before,.icon-phone:before,.icon-plate:before,.icon-position2:before,.icon-position:before,.icon-supporting:before,.icon-thin-code:before,.icon-thin-eye:before,.icon-thin-mobile:before,.icon-thin-password:before,.icon-ticket:before,.icon-time:before,.icon-user:before,.icon-warn:before,.icon-wrench:before {
@@ -1393,7 +1393,7 @@ button,input,select {
 
 .voice-tip {
     position: relative;
-    background: url(../../static/images/img-line.png) left bottom no-repeat;
+    background: url(../../asset/img/img-line.png) left bottom no-repeat;
     background-size: 100%;
     height: 1.375rem;
     line-height: 1.375rem;

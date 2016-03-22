@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	#parse("common/base.vm")
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1,user-scalable=no">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="format-detection" content="telephone=no, address=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<title></title>
+	<script type="text/javascript" src="$URL/asset/js/flexible.min.js"></script>
+	<link rel="stylesheet" href="$URL/asset/css/ui.css">
+	<link rel="stylesheet" href="$URL/asset/css/lib.css">
+	<link rel="stylesheet" href="$URL/asset/css/list.min.css">
+</head>
+<body>
+	#set($orderlist = $!{myOrderList.get('orderInfos')})
+	#foreach($orderInfo in $!orderlist)
+	<div class="section nomargin" onclick="location.href='$URL/customer/order-detail?id=$!{orderInfo.id}&suiteType=$!{orderInfo.suitType}'">
+		<div class="wraper">
+			<h3 class="flex order-type">预约项目：$!{orderInfo.suitTypeName}</h3>
+			<span class="button blue circle btn-status">
+				#if($!{orderInfo.isAccepted} == 1 && ${orderInfo.status} == 0)
+                    已受理
+				#elseif(${orderInfo.status} == 0)
+                    新订单
+				#elseif(${orderInfo.status} == 10)
+                    出发服务
+				#elseif(${orderInfo.status} == 20)
+                    开始服务
+				#elseif(${orderInfo.status} == 30 && $!{orderInfo.isComment} == 0)
+                    待评价
+				#elseif(${orderInfo.status} == 30 && $!{orderInfo.isComment} == 1)
+                    服务完成
+				#elseif(${orderInfo.status} == -1)
+                    已取消
+				#end
+			</span>
+		</div>
+		<div class="section mg-left order-info-wrap">
+			#*<div class="service-type-log">
+				<img src="$URL/static/images/repair/default.jpg">
+			</div>*#
+			<div class="order-info">
+				<ul>
+					#if($!{orderInfo.serviceDate})
+					<li>
+						<i class="icon icon-time"></i>
+						<span>$!{orderInfo.serviceDate}#if($!{orderInfo.timeType} == "am") 上午#elseif($!{orderInfo.timeType} == "pm") 下午#else $!{orderInfo.serviceTime}#end</span>
+						<span class="button red line btn-status">#if(${orderInfo.isAtStore})到店服务#else 上门服务#end</span>
+					</li>
+					#end
+					<li>
+						<i class="icon icon-position"></i>
+						<span>$!{orderInfo.addr}</span>
+					</li>
+					<li>
+						<i class="icon icon-car"></i>
+						<span>$!{orderInfo.brandName}-$!{orderInfo.seriesName}-$!{orderInfo.modelName}</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="section mg-left order-num-time">
+			<ul>
+				<li>订单编号：${orderInfo.no}</li>
+				<li>下单时间：$!dateUtil.formatToyyyyMMddHHmm($!{orderInfo.createtime})</li>
+			</ul>
+		</div>
+		<div class="form-wrap">
+			<div class="form-item">
+				<span class="key-wrap order-price">
+					金额#if($!{orderInfo.isReceipted} == 1)（已付）#end：<b>$toolUtil.setScale($!{orderInfo.amount})元</b>
+				</span>
+				<span class="value-wrap">
+					#if($!{orderInfo.cusLongit} && $!{orderInfo.cusLongit} != "")
+					<i class="icon-navigation" data-address="$!{orderInfo.addr}" data-latitude="$!{orderInfo.cusLongit}" data-longitude="$!{orderInfo.cusLatit}"></i>
+					#end
+				</span>
+			</div>
+		</div>
+	</div>
+	#end
+	<div class="section nomargin" onclick="location.href='$URL/customer/order-detail?id=$!{orderInfo.id}&suiteType=$!{orderInfo.suitType}'">
+		<div class="wraper">
+			<h3 class="flex order-type">预约项目：$!{orderInfo.suitTypeName}</h3>
+			<span class="button blue circle btn-status">
+				#if($!{orderInfo.isAccepted} == 1 && ${orderInfo.status} == 0)
+                    已受理
+				#elseif(${orderInfo.status} == 0)
+                    新订单
+				#elseif(${orderInfo.status} == 10)
+                    出发服务
+				#elseif(${orderInfo.status} == 20)
+                    开始服务
+				#elseif(${orderInfo.status} == 30 && $!{orderInfo.isComment} == 0)
+                    待评价
+				#elseif(${orderInfo.status} == 30 && $!{orderInfo.isComment} == 1)
+                    服务完成
+				#elseif(${orderInfo.status} == -1)
+                    已取消
+				#end
+			</span>
+		</div>
+		<div class="section mg-left order-info-wrap">
+			#*<div class="service-type-log">
+				<img src="$URL/static/images/repair/default.jpg">
+			</div>*#
+			<div class="order-info">
+				<ul>
+					#if($!{orderInfo.serviceDate})
+					<li>
+						<i class="icon icon-time"></i>
+						<span>$!{orderInfo.serviceDate}#if($!{orderInfo.timeType} == "am") 上午#elseif($!{orderInfo.timeType} == "pm") 下午#else $!{orderInfo.serviceTime}#end</span>
+						<span class="button red line btn-status">#if(${orderInfo.isAtStore})到店服务#else 上门服务#end</span>
+					</li>
+					#end
+					<li>
+						<i class="icon icon-position"></i>
+						<span>$!{orderInfo.addr}</span>
+					</li>
+					<li>
+						<i class="icon icon-car"></i>
+						<span>$!{orderInfo.brandName}-$!{orderInfo.seriesName}-$!{orderInfo.modelName}</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="section mg-left order-num-time">
+			<ul>
+				<li>订单编号：${orderInfo.no}</li>
+				<li>下单时间：$!dateUtil.formatToyyyyMMddHHmm($!{orderInfo.createtime})</li>
+			</ul>
+		</div>
+		<div class="form-wrap">
+			<div class="form-item">
+				<span class="key-wrap order-price">
+					金额#if($!{orderInfo.isReceipted} == 1)（已付）#end：<b>$toolUtil.setScale($!{orderInfo.amount})元</b>
+				</span>
+				<span class="value-wrap">
+					#if($!{orderInfo.cusLongit} && $!{orderInfo.cusLongit} != "")
+					<i class="icon-navigation" data-address="$!{orderInfo.addr}" data-latitude="$!{orderInfo.cusLongit}" data-longitude="$!{orderInfo.cusLatit}"></i>
+					#end
+				</span>
+			</div>
+		</div>
+	</div>
+	<div class="section nomargin" onclick="location.href='$URL/customer/order-detail?id=$!{orderInfo.id}&suiteType=$!{orderInfo.suitType}'">
+		<div class="wraper">
+			<h3 class="flex order-type">预约项目：$!{orderInfo.suitTypeName}</h3>
+			<span class="button blue circle btn-status">
+				#if($!{orderInfo.isAccepted} == 1 && ${orderInfo.status} == 0)
+                    已受理
+				#elseif(${orderInfo.status} == 0)
+                    新订单
+				#elseif(${orderInfo.status} == 10)
+                    出发服务
+				#elseif(${orderInfo.status} == 20)
+                    开始服务
+				#elseif(${orderInfo.status} == 30 && $!{orderInfo.isComment} == 0)
+                    待评价
+				#elseif(${orderInfo.status} == 30 && $!{orderInfo.isComment} == 1)
+                    服务完成
+				#elseif(${orderInfo.status} == -1)
+                    已取消
+				#end
+			</span>
+		</div>
+		<div class="section mg-left order-info-wrap">
+			#*<div class="service-type-log">
+				<img src="$URL/static/images/repair/default.jpg">
+			</div>*#
+			<div class="order-info">
+				<ul>
+					#if($!{orderInfo.serviceDate})
+					<li>
+						<i class="icon icon-time"></i>
+						<span>$!{orderInfo.serviceDate}#if($!{orderInfo.timeType} == "am") 上午#elseif($!{orderInfo.timeType} == "pm") 下午#else $!{orderInfo.serviceTime}#end</span>
+						<span class="button red line btn-status">#if(${orderInfo.isAtStore})到店服务#else 上门服务#end</span>
+					</li>
+					#end
+					<li>
+						<i class="icon icon-position"></i>
+						<span>$!{orderInfo.addr}</span>
+					</li>
+					<li>
+						<i class="icon icon-car"></i>
+						<span>$!{orderInfo.brandName}-$!{orderInfo.seriesName}-$!{orderInfo.modelName}</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="section mg-left order-num-time">
+			<ul>
+				<li>订单编号：${orderInfo.no}</li>
+				<li>下单时间：$!dateUtil.formatToyyyyMMddHHmm($!{orderInfo.createtime})</li>
+			</ul>
+		</div>
+		<div class="form-wrap">
+			<div class="form-item">
+				<span class="key-wrap order-price">
+					金额#if($!{orderInfo.isReceipted} == 1)（已付）#end：<b>$toolUtil.setScale($!{orderInfo.amount})元</b>
+				</span>
+				<span class="value-wrap">
+					#if($!{orderInfo.cusLongit} && $!{orderInfo.cusLongit} != "")
+					<i class="icon-navigation" data-address="$!{orderInfo.addr}" data-latitude="$!{orderInfo.cusLongit}" data-longitude="$!{orderInfo.cusLatit}"></i>
+					#end
+				</span>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

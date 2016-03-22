@@ -1,0 +1,138 @@
+<head>
+	#parse("common/base.vm")
+<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1,user-scalable=no">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="format-detection" content="telephone=no, address=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<title></title>
+	<link rel="stylesheet" href="$URL/asset/css/ui.css">
+	<link rel="stylesheet" href="$URL/asset/css/lib.css">
+	<script type="text/javascript" src="$URL/asset/js/flexible.min.js"></script>
+	<link rel="stylesheet" href="$URL/asset/css/benefit.min.css?v=$!toolUtil.getVersionTimestamp()">
+</head>
+<body class="bg-gray">
+	<div class="page">
+		#*<div class="bf-pager">
+			<span>2</span>/<span>10</span>
+		</div>*#
+		<!-- 优惠券详情 -->
+		<div class="common-list">
+			<div class="coupon-infos">
+				<div class="coupon-infos-header">
+					<h3>的法师打发发史蒂夫</h3>
+					<span class="status">#if($!{coupon.type} == 1)抵用券#elseif($!{coupon.type} == 2)折扣券#elseif($!{coupon.type} == 3)定额券#elseif($!{coupon.type} == 4)礼品券#end</span>
+				</div>
+				<div class="coupon-infos-action">
+					<div class="flex coupon-discount">
+						#if($!{coupon.type} == 1)
+							#if($!{coupon.discount} == 0)
+								全额
+							#elseif($!{coupon.discount})
+								$!{coupon.discount}<i>元</i>
+							#end
+						#elseif($!{coupon.type} == 2 && $!{coupon.discount})
+								$!{coupon.discount}<i>折</i>
+						#elseif($!{coupon.type} == 3)
+							<!--定额-->
+						#elseif($!{coupon.type} == 4)
+							<!--礼品-->
+						#end
+					</div>
+					
+					#if(!$!{isNeedBuy})
+						#if($!{checkCoupon.passed}&&$!{isGet}!=1)
+							<button class="flex flat-btn coupon-btn" id="get-coupon-btn">立刻领取</button>
+						#elseif($!{isGet}==1)
+							<button class="flex flat-btn coupon-btn disable">您已经领取该券</button>
+						#else
+							<button class="flex flat-btn coupon-btn disable">$!{checkCoupon.msg}</button>
+						#end
+					#else
+						#set($buyCouponUrl = ${URL} + "/coupon/buyCoupon?couponId=" + $!{coupon.id})
+						<input type="hidden" id="buyCouponUrl" value="$toolUtil.getAuth2URL($!{buyCouponUrl})"/>
+						<button type="button" class="flex flat-btn coupon-btn" id="buy-coupon">立即抢购</button>
+					#end
+				</div>
+				<div class="form-item">
+					<label class="label">
+						每人限领：
+					</label>
+					<span class="label-value">
+						$!{coupon.collNumEach}张
+					</span>
+				</div>
+				<div class="form-item">
+					<label class="label">
+						有效期：
+					</label>
+					<span class="label-value">
+    					#if($!{coupon.dynamicDateRange})
+    						$!{coupon.useDates}天
+    					#else 
+    						$dateUtil.formateDateToStr($!{coupon.useStartDate}, "yyyy-MM-dd")至$dateUtil.formateDateToStr($!{coupon.useEndDate}, "yyyy-MM-dd")
+    					#end
+					</span>
+				</div>
+				<div class="form-item">
+					<label class="label">
+						使用规则：
+					</label>
+					<span class="label-value">
+						每张限使用$!{coupon.usageNum}次
+					</span>
+				</div>
+				<div class="form-item">
+					<span class="label-value">
+        				#if(!$!{city.isAll})
+        					仅限（#foreach($c in ${city.citys})#if($velocityCount != 1)、#end$!{c.cityName}#end）使用
+        				#else
+							全国通用	
+    					#end
+					</span>
+				</div>
+				<div class="form-item form-item-noline">
+					<span class="label-value">
+        				#if($!{hasSuiteType})
+        					仅限（#foreach($i in ${items})#if($velocityCount != 1)、#end$toolUtil.getSuiteNameById($!{i.suiteTypeId})#end）预约使用
+						#else
+							$!{coupon.usageDesc}
+        				#end
+				</span>
+				</div>
+				<div class="form-item">
+					<span class="label-value">
+						<button id="show-rule" class="line-btn">券须知</button>
+					</span>
+				</div>
+			</div>
+			<input type="hidden" id="couponId" value="$!{coupon.id}" />
+			<input type="hidden" id="channel" value="$!{channel}"/>
+			<input type="hidden" id="refOrderNo" value="$!{refOrderNo}"/>
+			<input type="hidden" id="cusMobileNo" value="$!{cusMobileNo}"/>
+		</div>
+	</div>
+	<script type="text/html" id="couponPanel">
+		<div class="search-wraper">
+			<input placeholder="请输入手机号" class="search-input" id="mobileNo" verify="NotNull&&mobilePhone" alias="手机号" type="text">
+			<button id="getVerifyCode" class="search-btn" onclick="VerifyCode.getMsgCode()">获取验证码</button>
+		</div>
+        <div class="code-wrap">
+            <input placeholder="请输入验证码" id="verifyCode" verify="NotNull" alias="验证码" class="search-input" type="text">
+        </div>
+        <div class="button-wrap">
+            <button class="button blue" onclick="#if(!$!{isNeedBuy})Coupon.getCoupon()#elseif(true) Coupon.userRegister()#end">领取</button>
+        </div>
+		#*<div class="stock-panel">
+		    <span class="item-price" style="float:left;">每单限购6个</span>
+		    <span id="stockItme" style="float:right">
+		    </span>
+		</div>*#
+	</script>
+	<script type="text/html" id="rulePanel">
+		<div class="rule-panel">
+			$!{coupon.description}
+		</div>
+	</script>
+</body>

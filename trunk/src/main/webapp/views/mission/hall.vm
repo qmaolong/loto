@@ -50,7 +50,7 @@
             			<p class="rate-cus-name"></p>
             		</div>
             		<div class="rate-content">
-            			<div class="rate-content-info">
+            			<div class="rate-content-info" onclick="location.href='$URL/mission/missionInfo?id=1'">
             				<div class="rate-text">
             					<a href='javascript:void(0)' class='tag1'>￥0.3</a>&nbsp;<a href='javascript:void(0)' class='tag2'>余143</a>
 								<span>扫码试玩，须苹果手机首次关注下载，安卓手机勿安卓手机勿扰……<span>
